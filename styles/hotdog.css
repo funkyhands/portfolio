@@ -1,3 +1,30 @@
+img{
+    width: 100%;
+}
+
+.container{
+    width: 35%;
+    margin: auto;
+}
+
+.blogtitle{
+    font-size: 45px;
+}
+
+.blogdate{
+    color: rgb(100, 100, 100);
+    padding-top: 10px;
+}
+
+.serif{
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+.serif p{
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .text{
     padding: 25px 0 50px 0;
     font-size: 20px;
@@ -12,12 +39,12 @@
     }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
     .container{
         width: auto;
         margin: 0;
     }
-    
+
     .text{
         font-size: 15px;
         text-align: justify;

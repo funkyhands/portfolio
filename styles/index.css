@@ -1,16 +1,9 @@
-.column{
-    width: 47%;
-    padding: 10px;
-    float: left;
+.bigtitle{
+    font-size: 70px;
 }
 
-.column a{
-    padding-bottom: 10px;
-    background-color: blue;
-}
-
-.row{
-    text-align: center;
+img{
+    width: 100%;
 }
 
 .home-container{
@@ -18,10 +11,11 @@
     padding: 0 10%;
     clear: both;
     border-radius: 30px;
+    text-align: center;
 }
 
 #home{
-    padding: 27% 0;
+    padding: 370px 0;
 }
 
 #feature-background{
@@ -30,18 +24,12 @@
 }
 
 @media (max-width: 1080px) {
-    #home{
-        padding: 35% 0;
-    }
-}
-
-@media (max-width: 960px) {
     .home-container{
-        padding: 25% 5% 15% 5%;
+        padding: 200px 5%;
     }
 
     #home{
-        padding: 45% 0;
+        padding: 150px 0;
         text-align: center;
     }
 }

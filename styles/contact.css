@@ -27,7 +27,7 @@ html, body{
 }
 
 .social1 p{
-    padding-bottom: 5px;
+    padding-bottom: 0px;
 }
 
 .social2{
@@ -37,7 +37,7 @@ html, body{
 }
 
 .social2 p{
-    padding-bottom: 5px;
+    padding-bottom: 0px;
 }
 
 .social2 a{
@@ -47,7 +47,7 @@ html, body{
 
 .c-container{
     height: 60%;
-    padding: 15% 30% 0 30%;
+    padding: 200px 30% 50px 30%;
 }
 
 input, button{
@@ -64,31 +64,13 @@ input, button{
     margin: 10px;
 }
 
-@media (max-width: 1366px){
+@media (max-width: 1080px) {
     .c-container{
-        padding: 5% 30% 10% 30%;
-    }
-
-    .container-grey{
-        padding: 10% 0 0 0;
-    }
-
-    .form{
-        height: 100%;
-    }
-
-    .contact{
-        height: 400px;
-    }
-}
-
-@media (max-width: 960px) {
-    .c-container{
-        padding: 15% 10% 0 10%;
+        padding: 150px 10% 0 10%;
     }
 
     .container-grey{
         margin: 0;
-        padding: 0 0 100px 0;
+        padding: 50px 0 100px 0;
     }
 }

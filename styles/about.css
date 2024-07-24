@@ -7,15 +7,15 @@
     height: 100%;
 }
 
-.contain{
-    height: 500px;
-}
-
 .sideimage{
     width: 50%;
     float: left;
     padding-right: 10px;
-    
+    margin-bottom: 200px;
+}
+
+img{
+    width: 100%;
 }
 
 .sidetext{
@@ -23,7 +23,6 @@
     width: 48%;
     float: left;
     padding-left: 10px;
-    
 }
 
 .experience{
@@ -34,7 +33,7 @@
 
 .job{
     padding-top: 80px;
-    width: 1-0%;
+    width: 100%;
     text-align: justify;
     font-size: large;
 }
@@ -66,7 +65,7 @@
 
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
     .sideimage{
         float: none;
         width: 100%;

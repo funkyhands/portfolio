@@ -1,49 +1,65 @@
+.container p{
+    font-size: 50px;
+}
+
+.container{
+    text-align: center;
+}
+
+.contain{
+    background-color: rgba(230, 230, 230, 0.95);
+    width: 100%;
+    height: auto;
+}
+
 .contain a{
     text-decoration: none;
     color: black;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+.serif{
+    padding-top: 70px;
+    padding-bottom: 10%;
+}
+
+.serif p{
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .div1{
-    float: left;
-    height: 100%;
-    width: 20%;
-}
-
-.div2{
-    float: right;
-    height: 100%;
-    width: 80%;
+    height: auto;
+    width: auto;
+    padding: 20px 20%;
 }
 
 .segment{
+    height: 100%;
     width: 100%;
-    margin-top:50px;
-    padding: 10%;
-    border-style: solid;
-    border-left: 2px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
 }
 
 .content{
-    padding-bottom: 5%;
+    padding: 15px 0;
 }
 
-@media (max-width: 1366px) {
-    .contain{
-        height: 650px;
-    }
-
-    .contain a{
-        font-size: 16px;
-    }
+img{
+    width: 100%;
 }
 
-@media (max-width: 960px) {
+
+
+@media (max-width: 1080px) {
     .div1{
-        width: 100%;
+        width: auto;
+        background-color: rgba(231, 231, 231, 0.945);
     }
 
-    .segment{
-        margin-top: 70px;
+    .contain{
+        height: auto;
+    }
+
+    .serif p{
+        font-size: 40px;
     }
 }
