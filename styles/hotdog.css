@@ -13,10 +13,11 @@
 }
 
 @media (max-width: 960px) {
-    .div1{
-        width: 100%;
+    .container{
+        width: auto;
+        margin: 0;
     }
-
+    
     .text{
         font-size: 15px;
         text-align: justify;
