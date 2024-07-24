@@ -109,7 +109,7 @@ footer{
 
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1066px) {
     header{
         padding: 20px 0;
     }
