@@ -75,14 +75,6 @@ header{
     border-radius: 1px;
 }
 
-.bg{
-    background-image: url("images/project1.jpeg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
 .container{
     padding: 10%;
     clear: both;
@@ -114,7 +106,7 @@ footer{
 }
 
 @media (max-width: 1366px){
-    .container: ;
+
 }
 
 @media (max-width: 1125px) {
@@ -132,7 +124,6 @@ footer{
     }
 
     .namebar{
-        float: none;
         width: 100%;
         text-align: center;
     }
@@ -140,21 +131,28 @@ footer{
     .navbar{
         display: none;
         width: 100%;
-        text-align: center;
         font-size: small;
+        height: auto;
+        padding-top: 10px;
+    }
+
+    .navbar ul{
+        width: 100%;
+    }
+
+    .navbar ul li{
+        display: flex;
+        justify-content: center;
         padding-top: 10px;
     }
 
     .navbar a{
         color: black;
+        padding: 0 0 10px 0;
     }
 
     .navbar .active a{
         color: red;
-    }
-
-    .navbar ul{
-        width: 100%;
     }
 
     .navbar.active{
