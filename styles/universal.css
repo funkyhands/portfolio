@@ -4,6 +4,24 @@
     margin: 0px;
 }
 
+.serif{
+    padding-top: 70px;
+    padding-bottom: 10%;
+}
+
+.serif p{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.blogtitle{
+    font-size: 45px;
+}
+
+.blogdate{
+    color: rgb(100, 100, 100);
+    padding-top: 10px;
+}
+
 #nav{
     padding: 0 5%;
 }
@@ -117,6 +135,10 @@ footer{
     header{
         background-color: rgb(255, 255, 255, 0.95);
         padding: 20px 0;
+    }
+
+    .blogtitle{
+        font-size: 30px;
     }
 
     .toggle-button{

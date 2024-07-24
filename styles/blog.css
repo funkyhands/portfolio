@@ -18,7 +18,7 @@
 
 .segment{
     width: 100%;
-    margin-top:18%;
+    margin-top:50px;
     padding: 10%;
     border-style: solid;
     border-left: 2px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ;
@@ -41,5 +41,9 @@
 @media (max-width: 960px) {
     .div1{
         width: 100%;
+    }
+
+    .segment{
+        margin-top: 70px;
     }
 }
