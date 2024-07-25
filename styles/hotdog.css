@@ -65,6 +65,6 @@ img{
 
 @media (max-width: 720px) {
     .container{
-        padding: 20px;
+        padding: 20% 20px;
     }
 }
