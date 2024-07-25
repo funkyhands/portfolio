@@ -95,6 +95,31 @@ footer{
     background-color: bisque;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
+.to-top{
+    background-color: rgba(230, 230, 230, 0.9);
+    padding: 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: black;
+    position: fixed;
+    bottom: 32px;
+    left: 16px;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .4s;
+}
+
+.to-top.active{
+    bottom: 32px;
+    pointer-events: auto;
+    opacity: 1;
+}
+
 @media (max-width: 1080px) {
     header{
         background-color: rgb(255, 255, 255, 0.95);

@@ -24,6 +24,7 @@ img{
 
 .crop{
     height: auto;
+    opacity: 50%;
 }
 
 #box{
@@ -42,7 +43,7 @@ img{
     }
 
     .crop{
-        padding: 50px 0 50px 0;
+        padding: 50px 0;
         height: auto;
         width: 100%;
     }
