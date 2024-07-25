@@ -18,18 +18,50 @@ img{
     padding: 370px 0;
 }
 
-#feature-background{
-    padding: 50px 0;
-    opacity: 100%;
+.contain{
+    padding-top: 100px;
+}
+
+.crop{
+    height: auto;
+}
+
+#box{
+    height: 300px;
+    margin: 20px 0;
+}
+
+@media (max-width: 1366px) {
+    #home{
+        padding: 250px 10%;
+    }
+
+    .contain{
+        width: 100%;
+        padding: 0;
+    }
+
+    .crop{
+        padding: 50px 0 50px 0;
+        height: auto;
+        width: 100%;
+    }
+
+    .content{
+        text-align: center;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 1080px) {
     .home-container{
-        padding: 200px 5%;
+        padding: 150px 5%;
     }
 
     #home{
-        padding: 150px 0;
+        padding: 100px 0;
         text-align: center;
     }
 }
