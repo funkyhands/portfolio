@@ -107,7 +107,7 @@ html{
     color: black;
     position: fixed;
     bottom: 32px;
-    left: 16px;
+    left: 32px;
     display: flex;
     opacity: 0;
     pointer-events: none;

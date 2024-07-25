@@ -8,7 +8,7 @@ img{
 }
 
 .blogtitle{
-    font-size: 45px;
+    font-size: 50px;
 }
 
 .blogdate{
@@ -17,7 +17,7 @@ img{
 }
 
 .serif{
-    padding-top: 70px;
+    padding-top: 0px;
     padding-bottom: 50px;
 }
 
@@ -26,14 +26,24 @@ img{
 }
 
 .text{
-    padding: 25px 0 50px 0;
-    font-size: 20px;
+    padding: 10px 0 50px 0;
+    font-size: 16px;
+    line-height: 32px;
+    width: 100%;
+    margin: auto;
+}
+
+.description{
+    text-align: center;
+    font-size: 14px;
+    color: grey;
+    padding-bottom: 10px;
 }
 
 @media (max-width: 1366px) {
     .container{
         height: 100%;
-        width: 60%;
+        width: 50%;
         margin: auto;
         justify-content: center;
     }
@@ -43,10 +53,18 @@ img{
     .container{
         width: auto;
         margin: 0;
+        padding: 20%;
     }
 
     .text{
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 24px;
         text-align: justify;
+    }
+}
+
+@media (max-width: 720px) {
+    .container{
+        padding: 20px;
     }
 }
