@@ -149,3 +149,9 @@ footer{
         font-size: 40px;
     }
 }
+
+@media (max-width: 760px) {
+    .container-grey{
+        padding: 0 5%;
+    }
+}
