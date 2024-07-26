@@ -40,6 +40,11 @@ img{
     padding-bottom: 10px;
 }
 
+.bold{
+    font-size: larger;
+    padding-top: 20px;
+}
+
 @media (max-width: 1366px) {
     .container{
         height: 100%;

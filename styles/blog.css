@@ -39,7 +39,17 @@
 }
 
 .content{
-    padding: 15px 0;
+    padding: 25px 20px;
+}
+
+.content p{
+    float: right;
+    padding-top: 3px;
+    color: grey;
+}
+
+.content:hover{
+    background-color: rgb(199, 199, 199);
 }
 
 img{
@@ -60,5 +70,13 @@ img{
 
     .serif p{
         font-size: 40px;
+    }
+
+    .content{
+        padding: 10px;
+    }
+
+    .content p{
+        float: none;
     }
 }
