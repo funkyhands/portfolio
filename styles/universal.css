@@ -101,7 +101,7 @@ html{
 
 .to-top{
     background-color: rgba(230, 230, 230, 0.9);
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 20px;
     text-decoration: none;
     color: black;
@@ -178,5 +178,9 @@ html{
 @media (max-width: 760px) {
     .container-grey{
         padding: 0 5%;
+    }
+
+    .to-top{
+        left: 20px;
     }
 }

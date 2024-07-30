@@ -80,3 +80,9 @@ img{
         float: none;
     }
 }
+
+@media (max-width:760px) {
+    .div1{
+        padding: 20px 5%;
+    }
+}
