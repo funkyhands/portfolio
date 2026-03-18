@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Nigel Quek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/contact.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="contact-header">
+            <h1>Contact</h1>
+            <p>Feel free to reach out for collaborations, inquiries, or just to say hello.</p>
+        </section>
+
+        <section class="contact-form-section">
+            <h2>Send a message</h2>
+            <form class="contact-form" action="https://formspree.io/f/xreyrpey" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send</button>
+            </form>
+        </section>
+
+        <section class="contact-list">
+            <div class="contact-item">
+                <span class="contact-label">Email</span>
+                <span class="contact-value"><a href="mailto:nigelquek.id@gmail.com">nigelquek.id@gmail.com</a></span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+65 9489 9920</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">Instagram</span>
+                <span class="contact-value"><a href="https://www.instagram.com/handsfunky" target="_blank">@handsfunky</a></span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value"><a href="https://www.linkedin.com/in/nigel-quek/" target="_blank">Nigel Quek</a></span>
+            </div>
+        </section>
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2024</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+
+</body>
+</html>

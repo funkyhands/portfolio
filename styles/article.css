@@ -1,0 +1,135 @@
+/* ===== Article / Detail Page ===== */
+
+/* Back link in header area */
+.article-back {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-light);
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+}
+
+.article-back:hover {
+    color: var(--color-black);
+}
+
+.article-back::before {
+    content: "\2190\00a0";
+}
+
+/* Article header */
+.article-header {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 3rem;
+}
+
+.article-header h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+}
+
+.article-header .article-date {
+    font-size: 0.875rem;
+    color: var(--color-light);
+}
+
+/* Article body content */
+.article-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+}
+
+.article-body img {
+    width: 100%;
+    margin: 2rem 0 0.5rem;
+}
+
+.article-body .caption {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-light);
+    margin-bottom: 2rem;
+}
+
+.article-body p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-dark);
+    margin-bottom: 1.5rem;
+}
+
+.article-body .subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-black);
+    margin: 3rem 0 1rem;
+}
+
+.article-body .summary {
+    font-size: 0.85rem;
+    color: var(--color-mid);
+    line-height: 1.8;
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border-radius: 4px;
+    margin-top: 2rem;
+}
+
+/* Sub-navigation tabs */
+.sub-nav {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.sub-nav a {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-mid);
+    transition: all 0.2s;
+}
+
+.sub-nav a:hover {
+    border-color: var(--color-dark);
+    color: var(--color-black);
+}
+
+.sub-nav a.active {
+    background: var(--color-black);
+    border-color: var(--color-black);
+    color: var(--color-white);
+}
+
+/* Project detail (image gallery style) */
+.project-gallery {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+}
+
+.project-gallery img {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .article-header {
+        padding: 2rem 0 2rem;
+    }
+
+    .article-body {
+        max-width: 100%;
+    }
+}

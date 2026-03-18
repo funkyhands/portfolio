@@ -1,0 +1,90 @@
+/* ===== About Page ===== */
+.about-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    padding: 4rem 0;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-portrait img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+.about-text h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    color: var(--color-dark);
+    line-height: 1.8;
+}
+
+/* ===== Experience ===== */
+.experience-section {
+    padding: 4rem 0;
+    border-top: 1px solid var(--color-border);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.experience-section h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-light);
+    margin-bottom: 3rem;
+}
+
+.job {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.job-meta h3 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.job-meta .job-role {
+    font-size: 0.875rem;
+    color: var(--color-mid);
+}
+
+.job-meta .job-date {
+    font-size: 0.8rem;
+    color: var(--color-light);
+    margin-top: 0.25rem;
+}
+
+.job-description {
+    font-size: 0.9rem;
+    color: var(--color-dark);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .about-intro {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-portrait img {
+        max-width: 300px;
+    }
+
+    .job {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}

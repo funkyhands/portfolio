@@ -1,0 +1,185 @@
+/* ===== Hero ===== */
+.hero {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 0 4rem;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.125rem;
+    color: var(--color-mid);
+    max-width: 480px;
+}
+
+/* ===== Featured Projects ===== */
+.featured-heading {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-light);
+    margin-bottom: 2rem;
+}
+
+/* ===== Carousel ===== */
+.carousel-wrapper {
+    position: relative;
+    padding-bottom: 4rem;
+    /* Break out of page-content container */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+    padding: 0 calc((100vw - var(--max-width)) / 2 + 2rem);
+}
+
+.carousel-track:active {
+    cursor: grabbing;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-track .project-card {
+    flex: 0 0 55%;
+    scroll-snap-align: center;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.carousel-track .project-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.project-card .card-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+}
+
+.project-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease;
+}
+
+.project-card:hover .card-image img {
+    transform: scale(1.06);
+}
+
+.project-card .project-info {
+    padding: 1rem 0;
+}
+
+.project-card .project-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.project-card .project-tag {
+    font-size: 0.8rem;
+    color: var(--color-light);
+}
+
+/* Carousel controls */
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.carousel-dot.active {
+    background: var(--color-black);
+    transform: scale(1.25);
+}
+
+.carousel-arrows {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--color-black);
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.carousel-arrow:hover {
+    background: var(--color-bg);
+    border-color: var(--color-light);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 50vh;
+        padding: 4rem 0 3rem;
+    }
+
+    .carousel-track {
+        padding: 0 1.25rem;
+    }
+
+    .carousel-track .project-card {
+        flex: 0 0 80%;
+    }
+
+    .carousel-controls {
+        padding: 0 1.25rem;
+    }
+}

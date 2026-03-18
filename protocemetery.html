@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocemetery — Nigel Quek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/article.css">
+    <style>
+        /* Section dividers */
+        .article-section {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-top: 1px solid var(--color-border);
+        }
+        .article-section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .article-section img {
+            width: 100%;
+            margin: 2rem 0 0.5rem;
+        }
+        .article-section .caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-bottom: 2rem;
+        }
+        .article-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+        .article-section .subtitle {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--color-black);
+            margin: 0 0 1rem;
+        }
+
+        /* Readings grid */
+        .readings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .reading-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            margin: 0 0 0.75rem !important;
+        }
+        .reading-card h4 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            min-height: 2.8em;
+        }
+        .reading-card p {
+            font-size: 0.75rem !important;
+            line-height: 1.6 !important;
+            color: var(--color-mid) !important;
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        .carousel-slide img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            margin: 0 !important;
+            display: block;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .carousel-btn.prev { left: 0.75rem; }
+        .carousel-btn.next { right: 0.75rem; }
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--color-mid);
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.2s;
+        }
+        .carousel-dot.active {
+            background: var(--color-black);
+            border-color: var(--color-black);
+        }
+        .carousel-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Collage row */
+        .collage-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0 0.5rem;
+        }
+        .collage-row img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .collage-row {
+                grid-template-columns: 1fr;
+            }
+            .readings-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html" class="active">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <a href="works.html" class="article-back">Works</a>
+
+        <section class="article-header">
+            <h1>Protocemetery</h1>
+            <div class="article-date">Architecture</div>
+        </section>
+
+        <!-- Brief -->
+        <div class="article-section">
+            <p class="subtitle">Brief</p>
+            <p>
+                In a future stripped bare by AI-driven mining, the Earth is left scarred and sterile. Amid this collapse, a new form of life emerges — not to conquer, but to tend. This project imagines a post-collapse settlement where cemeteries become sites of renewal, energy, and memory, transforming loss into sustenance and grief into growth.
+            </p>
+        </div>
+
+        <!-- Narrative -->
+        <div class="article-section">
+            <p class="subtitle">Narrative</p>
+            <p>
+                By the end of the 21st century, resource extraction had rendered vast landscapes uninhabitable. While many fled to crowded cities, a group ventured into the dead zones — becoming the "First Tenders" of the Earth. They discovered that by returning the deceased to the land, they could nourish the soil and regenerate what had been lost. Cemeteries, once solely places of mourning, became vital sites of ecological rebirth.
+            </p>
+            <p>
+                The settlement is organised around three journeys: the pilgrims who visit to mourn and remember, the tenders who steward the land and process the dead, and the dying who make their final passage. Energy itself has replaced money — wind, sun, water, and human effort power everything, from daily life to festivals of remembrance.
+            </p>
+
+            <div class="collage-row">
+                <img src="images/protocemetery/collage_2.png" alt="Concept collage — sacred landscape">
+                <img src="images/protocemetery/collage_3.png" alt="Concept collage — technological entropy">
+            </div>
+            <p class="caption">Concept collages</p>
+        </div>
+
+        <!-- Site Development -->
+        <div class="article-section">
+            <p class="subtitle">Site Development</p>
+            <p>
+                The site sits at the edge of a cliff, shaded from the sun. The terrain was developed through a series of massing iterations — beginning with stacked block volumes representing the cliff's topography, then shifted and staggered to create terraces and circulation paths, before being smoothed to mimic natural erosion. The architecture is then designed within this sculpted landscape.
+            </p>
+
+            <div class="carousel" id="site-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Site massing — gridded terrain"><img src="images/protocemetery/1.png" alt="Site development — gridded terrain"></div>
+                    <div class="carousel-slide" data-label="Site massing — natural erosion"><img src="images/protocemetery/2.png" alt="Site development — eroded landscape"></div>
+                    <div class="carousel-slide" data-label="Site render"><img src="images/protocemetery/render1.jpeg" alt="Site render 1"></div>
+                    <div class="carousel-slide" data-label="Site render"><img src="images/protocemetery/render2.jpeg" alt="Site render 2"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="site-indicators"></div>
+            <div class="carousel-label" id="site-label">Site massing — gridded terrain</div>
+        </div>
+
+        <!-- Design -->
+        <div class="article-section">
+            <p class="subtitle">Design</p>
+            <p>
+                The building is organised vertically across the cliff face, with programmatic layers moving from communal spaces at the base to memorial and columbarium spaces above. Key programmes include living quarters, workspaces, community gathering areas, ceremonial rooms, processing chambers, and private reflection spaces enhanced by XR technology. The section reveals a nine-level structure embedded into the terrain, connected by a central circulation spine.
+            </p>
+
+            <div class="carousel" id="design-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Isometric view"><img src="images/protocemetery/Diagram.png" alt="Isometric view"></div>
+                    <div class="carousel-slide" data-label="Section"><img src="images/protocemetery/section.png" alt="Section"></div>
+                    <div class="carousel-slide" data-label="Site plan"><img src="images/protocemetery/symmetry.png" alt="Site plan with topography"></div>
+                    <div class="carousel-slide" data-label="1st Level"><img src="images/protocemetery/1st level.png" alt="1st Level Plan"></div>
+                    <div class="carousel-slide" data-label="2nd Level"><img src="images/protocemetery/2nd level.png" alt="2nd Level Plan"></div>
+                    <div class="carousel-slide" data-label="3rd Level"><img src="images/protocemetery/3rd level.png" alt="3rd Level Plan"></div>
+                    <div class="carousel-slide" data-label="4th Level"><img src="images/protocemetery/4th level.png" alt="4th Level Plan"></div>
+                    <div class="carousel-slide" data-label="5th Level"><img src="images/protocemetery/5th level.png" alt="5th Level Plan"></div>
+                    <div class="carousel-slide" data-label="6th Level"><img src="images/protocemetery/6th level.png" alt="6th Level Plan"></div>
+                    <div class="carousel-slide" data-label="Render"><img src="images/protocemetery/render5.jpg" alt="Render 5"></div>
+                    <div class="carousel-slide" data-label="Render"><img src="images/protocemetery/render3.jpg" alt="Render 3"></div>
+                    <div class="carousel-slide" data-label="Render"><img src="images/protocemetery/render4.jpg" alt="Render 4"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="design-indicators"></div>
+            <div class="carousel-label" id="design-label">Isometric view</div>
+        </div>
+
+        <!-- Readings -->
+        <div class="article-section">
+            <p class="subtitle">Readings</p>
+
+            <div class="readings-grid">
+                <div class="reading-card">
+                    <img src="images/protocemetery/reading_simulacra.png" alt="Reading diagram — Baudrillard's Simulacra">
+                    <h4>Simulacra (Baudrillard)</h4>
+                    <p>In a world saturated by representations, reality itself begins to erode. Images no longer reflect the real but replace it, multiplying through stages of simulation — from faithful representation, to distortion, to the masking of absence, and finally to pure simulacra. What remains is a hyperreality where authenticity is irrelevant, and the real is no longer missing — it never existed.</p>
+                </div>
+                <div class="reading-card">
+                    <img src="images/protocemetery/reading_aristotle.png" alt="Reading diagram — Aristotle on Memory">
+                    <h4>On Memory and Recollection (Aristotle)</h4>
+                    <p>Memory is a temporal phenomenon grounded in the body and perception — the persistence of a sensory impression which the soul revisits. Recollection, in contrast, is an active search, a movement of the mind retracing associations until the original image is revived. These processes are corporeal, reliant on the condition of the body and the receptivity of the sensory faculties.</p>
+                </div>
+                <div class="reading-card">
+                    <img src="images/protocemetery/reading_borges.jpg" alt="Reading diagram — Borges on Perfect Memory">
+                    <h4>Funes the Memorious (Borges)</h4>
+                    <p>Perfect memory eliminates abstraction, comparison, and generalisation — all essential to human thought. Without forgetting, there can be no synthesis, no concept, no metaphor. Language collapses under the burden of specificity. To think clearly, one must forget. Meaning emerges not from total retention, but from the gaps, the blurs, and the structures imposed by the limits of memory itself.</p>
+                </div>
+            </div>
+
+            <p>
+                Together, these readings ask: how do we remember meaningfully in a world where both forgetting and representation have been pushed to their limits? The Proto-Cemetery responds by anchoring memory in the body, in ritual, and in the land itself — not as data to be stored, but as an act of tending.
+            </p>
+        </div>
+
+        <!-- Summary board -->
+        <div class="article-section">
+            <img src="images/protocemetery/PALIMPSEST.png" alt="Summary board">
+            <p class="caption">Summary board</p>
+        </div>
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2024</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+    <script>
+        // Generic carousel initializer
+        function initCarousel(carouselId, indicatorsId, labelId) {
+            const carousel = document.getElementById(carouselId);
+            const track = carousel.querySelector('.carousel-track');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const indicatorWrap = document.getElementById(indicatorsId);
+            const labelEl = document.getElementById(labelId);
+            let current = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.addEventListener('click', () => goTo(i));
+                indicatorWrap.appendChild(dot);
+            });
+
+            function goTo(index) {
+                current = index;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                indicatorWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === current);
+                });
+                labelEl.textContent = slides[current].dataset.label;
+            }
+
+            carousel.querySelector('.prev').addEventListener('click', () => {
+                goTo(current === 0 ? slides.length - 1 : current - 1);
+            });
+            carousel.querySelector('.next').addEventListener('click', () => {
+                goTo(current === slides.length - 1 ? 0 : current + 1);
+            });
+
+            let startX = 0;
+            carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+            carousel.addEventListener('touchend', e => {
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) {
+                    diff > 0 ? goTo(Math.min(current + 1, slides.length - 1)) : goTo(Math.max(current - 1, 0));
+                }
+            });
+        }
+
+        initCarousel('site-carousel', 'site-indicators', 'site-label');
+        initCarousel('design-carousel', 'design-indicators', 'design-label');
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nigel Quek — Architecture & Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="hero">
+            <h1>Architecture<br>& Design</h1>
+            <p>Aspiring architect based in Singapore, studying at SUTD. Passionate about reshaping spaces to enhance how people experience their surroundings.</p>
+        </section>
+
+        <section class="section">
+            <p class="featured-heading">Featured Projects</p>
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carousel">
+                    <!-- Cards injected by JS -->
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-dots" id="carousel-dots"></div>
+                    <div class="carousel-arrows">
+                        <button class="carousel-arrow" id="prev-btn" aria-label="Previous">&larr;</button>
+                        <button class="carousel-arrow" id="next-btn" aria-label="Next">&rarr;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2024</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+    <script>
+        const projects = [
+            {
+                title: "Music Revitalisation",
+                tag: "Architecture",
+                image: "images/feature project.jpg",
+                link: "musicrev.html"
+            },
+            {
+                title: "Superbrandotel",
+                tag: "Hospitality",
+                image: "images/hospitality/livingroom.jpg",
+                link: "hospitality.html"
+            },
+            {
+                title: "Exercises",
+                tag: "Architecture",
+                image: "images/exercises/isometric.png",
+                link: "exercises.html"
+            },
+            {
+                title: "Protocemetery",
+                tag: "Architecture",
+                image: "images/protocemetery/render3.jpg",
+                link: "protocemetery.html"
+            },
+        ];
+
+        const track = document.getElementById('carousel');
+        const dotsContainer = document.getElementById('carousel-dots');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Build cards
+        projects.forEach(p => {
+            const card = document.createElement('a');
+            card.href = p.link;
+            card.className = 'project-card';
+            card.innerHTML = `
+                <div class="card-image">
+                    <img src="${p.image}" alt="${p.title}">
+                </div>
+                <div class="project-info">
+                    <div class="project-title">${p.title}</div>
+                    <div class="project-tag">${p.tag}</div>
+                </div>
+            `;
+
+            // Mouse tilt
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 6}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+
+            track.appendChild(card);
+        });
+
+        // Build dots (one per visible "page" of 2 cards)
+        const totalPages = Math.ceil(projects.length / 2);
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Page ${i + 1}`);
+            dot.addEventListener('click', () => scrollToPage(i));
+            dotsContainer.appendChild(dot);
+        }
+
+        function scrollToPage(page) {
+            const card = track.children[page * 2];
+            if (card) {
+                track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+            }
+        }
+
+        // Arrow buttons
+        let currentPage = 0;
+
+        prevBtn.addEventListener('click', () => {
+            currentPage = Math.max(0, currentPage - 1);
+            scrollToPage(currentPage);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentPage = Math.min(totalPages - 1, currentPage + 1);
+            scrollToPage(currentPage);
+        });
+
+        // Update dots on scroll
+        track.addEventListener('scroll', () => {
+            const scrollLeft = track.scrollLeft;
+            const cardWidth = track.children[0].offsetWidth + 32; // card width + gap
+            const page = Math.round(scrollLeft / (cardWidth * 2));
+            currentPage = Math.min(page, totalPages - 1);
+
+            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentPage);
+            });
+        });
+
+        // Drag to scroll
+        let isDragging = false;
+        let startX, scrollStart;
+
+        track.addEventListener('mousedown', e => {
+            isDragging = true;
+            startX = e.pageX;
+            scrollStart = track.scrollLeft;
+            track.style.scrollBehavior = 'auto';
+        });
+
+        track.addEventListener('mousemove', e => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const dx = e.pageX - startX;
+            track.scrollLeft = scrollStart - dx;
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                track.style.scrollBehavior = 'smooth';
+            }
+        });
+    </script>
+
+</body>
+</html>

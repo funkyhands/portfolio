@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asia Ghani — Nigel Quek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/article.css">
+    <style>
+        .carousel {
+            position: relative;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        .carousel-slide {
+            min-width: 100%;
+        }
+        .carousel-slide img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            margin: 0 !important;
+            display: block;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .carousel-btn:hover { background: rgba(0, 0, 0, 0.8); }
+        .carousel-btn.prev { left: 0.75rem; }
+        .carousel-btn.next { right: 0.75rem; }
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--color-mid);
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.2s;
+        }
+        .carousel-dot.active {
+            background: var(--color-black);
+            border-color: var(--color-black);
+        }
+        .carousel-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .carousel-btn { width: 32px; height: 32px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html" class="active">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <a href="works.html" class="article-back">Works</a>
+
+        <section class="article-header">
+            <h1>Asia Ghani</h1>
+            <div class="article-date">Spatial Design</div>
+        </section>
+
+        <div class="article-body">
+            <p class="subtitle">Client</p>
+            <p>
+                Asia Ghani is a family owned business which started in the 1970s in Bukit Batok, they served a wide variety of indian and muslim food and they would change their menu depending on the time of the day. But the one consistent dish that would stay on the menu regardless, was their signature chicken rice. What's special is the halal certified chinese rendition of the chicken rice.
+            </p>
+
+            <p class="subtitle">Design Intent</p>
+            <p>
+                To preserve the unique culinary experience that was passed down through many generations and to give the stall a modern but still traditional spatial experience.
+            </p>
+
+            <img src="images/asiaghani/asiag1.jpg" alt="Asia Ghani render">
+            <img src="images/asiaghani/asiag2.jpg" alt="Asia Ghani render">
+
+            <p class="subtitle">Design Research</p>
+            <p>
+                Located at Adam Road, Adam Rd Food Centre is home to some of Singapore's best foods. Opened in 1974, the hawker centre is well known for many of their original hawkers from the 1970s — one of them being the famous Selera Rasa Nasi Lemak.
+            </p>
+            <p>
+                Housing slightly more than 30 stalls, Adam Rd opens from early morning to late night, making it a favorite among residents nearby. The multi ethnic location is a good place for Asia Ghani to open their new stall.
+            </p>
+
+            <img src="images/asiaghani/siteplan.jpg" alt="Site plan">
+            <p class="caption">Site plan</p>
+
+            <div class="carousel" id="site-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Site visit"><img src="images/asiaghani/photo1.jpg" alt="Site visit"></div>
+                    <div class="carousel-slide" data-label="Site visit"><img src="images/asiaghani/photo2.jpg" alt="Site visit"></div>
+                    <div class="carousel-slide" data-label="Site visit"><img src="images/asiaghani/photo3.jpg" alt="Site visit"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="site-indicators"></div>
+            <div class="carousel-label" id="site-label">Site visit</div>
+
+            <p class="subtitle">Design Concept</p>
+            <p>
+                By using their brand colours in the space to establish their identity within the site following their dominant, sub dominant and accent colours. With traditional ceramic tiles to give the stall a more traditional and rhythmic feel. Through the opening of the kitchen and the use of a large glass facade, consumers can watch from the start how their food is prepared and served.
+            </p>
+
+            <img src="images/asiaghani/render1.jpg" alt="Design render">
+            <img src="images/asiaghani/render2.jpg" alt="Design render">
+        </div>
+
+        <div class="article-body">
+            <img src="images/asiaghani/boards.jpg" alt="Presentation boards">
+            <p class="caption">Presentation board</p>
+        </div>
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2024</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+    <script>
+        function initCarousel(carouselId, indicatorsId, labelId) {
+            const carousel = document.getElementById(carouselId);
+            const track = carousel.querySelector('.carousel-track');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const indicatorWrap = document.getElementById(indicatorsId);
+            const labelEl = document.getElementById(labelId);
+            let current = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goTo(i));
+                indicatorWrap.appendChild(dot);
+            });
+
+            function goTo(index) {
+                current = index;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                indicatorWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === current);
+                });
+                labelEl.textContent = slides[current].dataset.label;
+            }
+
+            carousel.querySelector('.prev').addEventListener('click', () => {
+                goTo(current === 0 ? slides.length - 1 : current - 1);
+            });
+            carousel.querySelector('.next').addEventListener('click', () => {
+                goTo(current === slides.length - 1 ? 0 : current + 1);
+            });
+
+            let startX = 0;
+            carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+            carousel.addEventListener('touchend', e => {
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) {
+                    diff > 0 ? goTo(Math.min(current + 1, slides.length - 1)) : goTo(Math.max(current - 1, 0));
+                }
+            });
+        }
+
+        initCarousel('site-carousel', 'site-indicators', 'site-label');
+    </script>
+
+</body>
+</html>

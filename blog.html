@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Nigel Quek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/blog.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="blog-header">
+            <h1>Adventures</h1>
+            <p>"Happiness only real when shared"</p>
+        </section>
+
+        <section class="blog-list">
+            <a href="indo24.html" class="blog-entry">
+                <span>Hiking Mount Bhutak</span>
+                <span class="blog-date">Jan 2024</span>
+            </a>
+            <a href="lopburi23.html" class="blog-entry">
+                <span>Rock Climbing in Khao Chin Lae</span>
+                <span class="blog-date">Dec 2023</span>
+            </a>
+            <a href="nepal23.html" class="blog-entry">
+                <span>Hiking Thorong La Pass</span>
+                <span class="blog-date">May 2023</span>
+            </a>
+            <a href="indo23.html" class="blog-entry">
+                <span>Hiking Mount Raung</span>
+                <span class="blog-date">Apr 2023</span>
+            </a>
+            <a href="hotdog.html" class="blog-entry">
+                <span>Cycling from Singapore to Hanoi</span>
+                <span class="blog-date">Jul 2022</span>
+            </a>
+        </section>
+
+        <div class="blog-map">
+            <div id="map"></div>
+        </div>
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2024</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map', {
+            scrollWheelZoom: false
+        }).setView([25, 50], 3);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+            maxZoom: 19
+        }).addTo(map);
+
+        const adventures = [
+            { lat: 1.3521, lng: 103.8198, title: "Singapore", desc: "Starting point — Cycling to Hanoi", link: "hotdog.html" },
+            { lat: 21.0285, lng: 105.8542, title: "Hanoi, Vietnam", desc: "Finish — Cycling from Singapore", link: "hotdog.html" },
+            { lat: 28.8, lng: 83.88, title: "Thorong La Pass, Nepal", desc: "Hiking Thorong La Pass", link: "nepal23.html" },
+            { lat: -8.13, lng: 114.04, title: "Mount Raung, Indonesia", desc: "Hiking Mount Raung", link: "indo23.html" },
+            { lat: -7.92, lng: 112.95, title: "Mount Bhutak, Indonesia", desc: "Hiking Mount Bhutak", link: "indo24.html" },
+            { lat: 15.02, lng: 100.41, title: "Khao Chin Lae, Thailand", desc: "Rock Climbing in Lopburi", link: "lopburi23.html" },
+            { lat: 40.4168, lng: -3.7038, title: "Madrid, Spain", desc: "Madrid" },
+            { lat: 40.9429, lng: -4.1088, title: "Segovia, Spain", desc: "Segovia" },
+            { lat: 42.6, lng: 0.5, title: "Pyrenees", desc: "Pyrenees" },
+            { lat: 31.6295, lng: -7.9811, title: "Marrakech, Morocco", desc: "Marrakech" },
+            { lat: 46.2940, lng: 7.8816, title: "Visp, Switzerland", desc: "Visp" }
+        ];
+
+        adventures.forEach(a => {
+            L.circleMarker([a.lat, a.lng], {
+                radius: 6,
+                fillColor: '#1a1a1a',
+                color: '#1a1a1a',
+                weight: 1,
+                fillOpacity: 0.8
+            })
+            .addTo(map)
+            .bindPopup(`<strong>${a.title}</strong><br><a href="${a.link}">${a.desc}</a>`);
+        });
+    </script>
+
+</body>
+</html>

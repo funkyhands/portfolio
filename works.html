@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works — Nigel Quek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/works.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html" class="active">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="works-header">
+            <h1>Works</h1>
+        </section>
+
+        <section class="works-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="architecture">Architecture</button>
+            <button class="filter-btn" data-filter="hospitality">Hospitality</button>
+            <button class="filter-btn" data-filter="spatial">Spatial Design</button>
+            <button class="filter-btn" data-filter="photography">Photography</button>
+        </section>
+
+        <section class="works-grid">
+            <a href="musicrev.html" class="work-card" data-category="spatial">
+                <img src="images/feature project.jpg" alt="Music Revitalisation" loading="lazy">
+                <div class="work-info">
+                    <div class="work-title">Music Revitalisation</div>
+                    <div class="work-tag">Architecture</div>
+                </div>
+            </a>
+            <a href="inceptus.html" class="work-card" data-category="spatial">
+                <img src="images/inceptus/thumbnail.jpg" alt="Inceptus" loading="lazy">
+                <div class="work-info">
+                    <div class="work-title">Inceptus</div>
+                    <div class="work-tag">Architecture</div>
+                </div>
+            </a>
+            <a href="hospitality.html" class="work-card" data-category="hospitality">
+                <img src="images/hospitality/livingroom.jpg" alt="Superbrandotel" loading="lazy">
+                <div class="work-info">
+                    <div class="work-title">Superbrandotel</div>
+                    <div class="work-tag">Hospitality</div>
+                </div>
+            </a>
+            <a href="exercises.html" class="work-card" data-category="architecture">
+                <img src="images/exercises/isometric.png" alt="Exercises" loading="lazy">
+                <div class="work-info">
+                    <div class="work-title">Exercises</div>
+                    <div class="work-tag">Architecture</div>
+                </div>
+            </a>
+            <a href="bridge.html" class="work-card" data-category="architecture">
+                <img src="images/project1.jpeg" alt="Bridge Structure" loading="lazy">
+                <div class="work-info">
+                    <div class="work-title">Bridge Structure</div>
+                    <div class="work-tag">Architecture</div>
+                </div>
+            </a>
+            <a href="protocemetery.html" class="work-card" data-category="architecture">
+                <img src="images/protocemetery/render3.jpg" alt="Protocemetery" loading="lazy">
+                <div class="work-info">
+                    <div class="work-title">Protocemetery</div>
+                    <div class="work-tag">Architecture</div>
+                </div>
+            </a>
+            <a href="asiaghani.html" class="work-card" data-category="spatial">
+                <img src="images/asiaghani/asiag1.jpg" alt="Asia Ghani" loading="lazy">
+                <div class="work-info">
+                    <div class="work-title">Asia Ghani</div>
+                    <div class="work-tag">Spatial Design</div>
+                </div>
+            </a>
+            <a href="photography.html" class="work-card" data-category="photography">
+                <img src="images/photography-gallery/18.JPG" alt="Photography" loading="lazy">
+                <div class="work-info">
+                    <div class="work-title">Photography</div>
+                    <div class="work-tag">Photography</div>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2024</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+    <script>
+        // Category filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.work-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                        // Re-trigger animation
+                        card.classList.remove('visible');
+                        void card.offsetWidth;
+                        requestAnimationFrame(() => card.classList.add('visible'));
+                    } else {
+                        card.classList.add('hidden');
+                        card.classList.remove('visible');
+                    }
+                });
+            });
+        });
+
+        // Scroll-triggered staggered fade-in
+        const observer = new IntersectionObserver((entries) => {
+            const visibleEntries = entries.filter(e => e.isIntersecting);
+            visibleEntries.forEach((entry, i) => {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, i * 100);
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography — Nigel Quek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/article.css">
+    <style>
+        /* ===== Hero ===== */
+        .photo-hero {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            height: 80vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .photo-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo-hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 4rem 2rem 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            color: white;
+        }
+        .photo-hero-overlay h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== Gallery ===== */
+        .gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 0.75rem 4rem;
+        }
+
+        /* Justified row — images sit side by side, same height, natural widths */
+        .row {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .row .img-wrap {
+            overflow: hidden;
+            flex: 1;
+        }
+
+        /* Control relative widths based on image orientation */
+        .row .img-wrap.w1 { flex: 1; }
+        .row .img-wrap.w2 { flex: 2; }
+        .row .img-wrap.w3 { flex: 3; }
+        .row .img-wrap.w0-7 { flex: 0.7; }
+        .row .img-wrap.w1-5 { flex: 1.5; }
+
+        /* Fixed row height keeps things proportional */
+        .row.h-sm { height: 280px; }
+        .row.h-md { height: 380px; }
+        .row.h-lg { height: 500px; }
+        .row.h-full { height: 55vh; }
+
+        .row img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease, filter 0.4s ease;
+            cursor: pointer;
+        }
+        .row img:hover {
+            transform: scale(1.03);
+            filter: brightness(1.05);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem; right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .photo-hero { height: 55vh; }
+            .row { flex-direction: column; height: auto !important; }
+            .row .img-wrap { height: 250px; flex: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html" class="active">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <div class="photo-hero">
+        <img src="images/photography-gallery/17.JPG" alt="Pyrenees road">
+        <div class="photo-hero-overlay">
+            <h1>Photography</h1>
+        </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery">
+
+        <!-- Row 1: portrait + landscape + portrait -->
+        <div class="row h-lg">
+            <div class="img-wrap w0-7"><img src="images/photography-gallery/4.jpg" alt="Photography"></div>
+            <div class="img-wrap w2"><img src="images/photography-gallery/12.JPG" alt="Photography"></div>
+            <div class="img-wrap w0-7"><img src="images/photography-gallery/6.JPG" alt="Photography"></div>
+        </div>
+
+        <!-- Row 3: 2 images, short -->
+        <div class="row h-sm">
+            <div class="img-wrap w2"><img src="images/photography-gallery/14.JPG" alt="Photography"></div>
+            <div class="img-wrap w1"><img src="images/photography-gallery/13.JPG" alt="Photography"></div>
+        </div>
+
+        <!-- Row 4: landscape + portrait 15 -->
+        <div class="row h-lg">
+            <div class="img-wrap w2"><img src="images/photography-gallery/2.jpg" alt="Photography"></div>
+            <div class="img-wrap w0-7"><img src="images/photography-gallery/15.JPG" alt="Photography"></div>
+            <div class="img-wrap w1-5"><img src="images/photography-gallery/3.jpg" alt="Photography"></div>
+        </div>
+
+        <!-- Row 5: portrait + landscape -->
+        <div class="row h-lg">
+            <div class="img-wrap w0-7"><img src="images/photography-gallery/5.jpg" alt="Photography"></div>
+            <div class="img-wrap w2"><img src="images/photography-gallery/16.JPG" alt="Photography"></div>
+        </div>
+
+        <!-- Row 6: 3 small -->
+        <div class="row h-sm">
+            <div class="img-wrap w1"><img src="images/photography-gallery/18.JPG" alt="Photography"></div>
+            <div class="img-wrap w1"><img src="images/photography-gallery/7.jpg" alt="Photography"></div>
+            <div class="img-wrap w1"><img src="images/photography-gallery/19.JPG" alt="Photography"></div>
+        </div>
+
+        <!-- Row 7: landscape 8 full width -->
+        <div class="row h-md">
+            <div class="img-wrap w1"><img src="images/photography-gallery/8.jpg" alt="Photography"></div>
+        </div>
+
+        <!-- Row 8: landscape + landscape -->
+        <div class="row h-md">
+            <div class="img-wrap w1"><img src="images/photography-gallery/1.jpg" alt="Photography"></div>
+            <div class="img-wrap w1-5"><img src="images/photography-gallery/11.jpg" alt="Photography"></div>
+        </div>
+
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <img id="lightbox-img" src="" alt="Photography">
+    </div>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2024</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+    <script>
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') lightbox.classList.remove('active');
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.gallery .img-wrap').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>

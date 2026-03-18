@@ -1,0 +1,136 @@
+/* ===== Works Page ===== */
+.works-header {
+    padding: 4rem 0 2rem;
+}
+
+.works-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+}
+
+/* ===== Category Filters ===== */
+.works-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 3rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8rem;
+    font-family: inherit;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--color-mid);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--color-dark);
+    color: var(--color-black);
+}
+
+.filter-btn.active {
+    background: var(--color-black);
+    border-color: var(--color-black);
+    color: var(--color-white);
+}
+
+/* ===== Grid ===== */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding-bottom: 4rem;
+}
+
+/* ===== Card ===== */
+.work-card {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.work-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.work-card.hidden {
+    display: none;
+}
+
+.work-card img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.work-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Hover overlay */
+.work-card .work-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem 1.5rem 1.5rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.work-card:hover .work-info {
+    opacity: 1;
+}
+
+.work-card .work-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.work-card .work-tag {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .works-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    /* Always show info on mobile since no hover */
+    .work-card .work-info {
+        opacity: 1;
+    }
+
+    .works-filters {
+        gap: 0.4rem;
+        padding-bottom: 2rem;
+    }
+
+    .filter-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.75rem;
+    }
+}
