@@ -96,16 +96,57 @@
             { lat: 46.2940, lng: 7.8816, title: "Visp, Switzerland", desc: "Visp" }
         ];
 
+        // Routes
+        const routes = [
+            {
+                name: "Singapore to Hanoi by Bicycle",
+                link: "hotdog.html",
+                color: "#e63946",
+                coords: [
+                    [1.3521, 103.8198],   // Singapore
+                    [1.47, 103.78],       // Johor Bahru crossing
+                    [2.19, 102.25],       // Malacca
+                    [3.14, 101.69],       // Kuala Lumpur
+                    [4.60, 101.08],       // Ipoh
+                    [5.41, 100.33],       // Penang
+                    [6.44, 100.20],       // Langkawi area / border
+                    [7.01, 100.47],       // Hat Yai
+                    [9.14, 99.33],        // Surat Thani
+                    [10.49, 99.19],       // Chumphon
+                    [12.57, 99.96],       // Hua Hin
+                    [13.75, 100.52],      // Bangkok
+                    [14.88, 102.01],      // Nakhon Ratchasima
+                    [16.47, 102.83],      // Khon Kaen
+                    [17.96, 102.63],      // Vientiane
+                    [18.80, 102.13],      // Luang Prabang area
+                    [19.91, 102.13],      // Northern Laos
+                    [20.42, 103.99],      // Lao Cai border
+                    [21.03, 105.85]       // Hanoi
+                ]
+            },
+        ];
+
+        routes.forEach(route => {
+            L.polyline(route.coords, {
+                color: route.color,
+                weight: 2.5,
+                opacity: 0.7,
+                dashArray: '6, 8',
+                smoothFactor: 1.5
+            }).addTo(map);
+        });
+
+        // Markers
         adventures.forEach(a => {
             L.circleMarker([a.lat, a.lng], {
                 radius: 6,
                 fillColor: '#1a1a1a',
-                color: '#1a1a1a',
-                weight: 1,
-                fillOpacity: 0.8
+                color: '#fff',
+                weight: 1.5,
+                fillOpacity: 0.9
             })
             .addTo(map)
-            .bindPopup(`<strong>${a.title}</strong><br><a href="${a.link}">${a.desc}</a>`);
+            .bindPopup(`<strong>${a.title}</strong><br>${a.link ? '<a href="' + a.link + '">' + a.desc + '</a>' : a.desc}`);
         });
     </script>
 

@@ -9,6 +9,111 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/universal.css">
     <link rel="stylesheet" href="styles/article.css">
+    <style>
+        .article-section {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-top: 1px solid var(--color-border);
+        }
+        .article-section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .article-section img {
+            width: 100%;
+            margin: 2rem 0 0.5rem;
+        }
+        .article-section .caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-bottom: 2rem;
+        }
+        .article-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+        .article-section .subtitle {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--color-black);
+            margin: 0 0 1rem;
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        .carousel-slide {
+            min-width: 100%;
+        }
+        .carousel-slide img {
+            width: 100%;
+            aspect-ratio: 3/2;
+            object-fit: cover;
+            margin: 0 !important;
+            display: block;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .carousel-btn:hover { background: rgba(0, 0, 0, 0.8); }
+        .carousel-btn.prev { left: 0.75rem; }
+        .carousel-btn.next { right: 0.75rem; }
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--color-mid);
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.2s;
+        }
+        .carousel-dot.active {
+            background: var(--color-black);
+            border-color: var(--color-black);
+        }
+        .carousel-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-btn { width: 32px; height: 32px; font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
 
@@ -34,13 +139,149 @@
 
         <section class="article-header">
             <h1>Music Revitalisation</h1>
-            <div class="article-date">Architecture</div>
+            <div class="article-date">Spatial Design</div>
         </section>
 
-        <div class="project-gallery">
-            <img src="images/project1.jpeg" alt="Music Revitalisation">
-            <img src="images/project1.jpeg" alt="Music Revitalisation">
-            <img src="images/project1.jpeg" alt="Music Revitalisation">
+        <!-- Overview -->
+        <div class="article-section">
+            <p class="subtitle">Brief</p>
+            <p>
+                Located in Singapore, China Square is a relatively old subzone with approximately 1,430 residents, mostly elderly. This project seeks to enliven the area through a multi-functional space that adapts to user needs, reconnecting people young and old through traditional music.
+            </p>
+
+            <p class="subtitle">Design Intent</p>
+            <p>
+                To create a platform that brings Hong Lim Complex and the area around it back to life by reconnecting the people, young and old, through traditional music.
+            </p>
+
+            <!-- Hero renders carousel -->
+            <div class="carousel" id="hero-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Render"><img src="images/musicrev/hero1.jpg" alt="Render 1" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Render"><img src="images/musicrev/hero2.jpg" alt="Render 2" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Render"><img src="images/musicrev/hero3.jpg" alt="Render 3" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Render"><img src="images/musicrev/hero4.jpg" alt="Render 4" loading="lazy"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="hero-indicators"></div>
+            <div class="carousel-label" id="hero-label">Render</div>
+        </div>
+
+        <!-- Research -->
+        <div class="article-section">
+            <p class="subtitle">Design Research</p>
+            <p>
+                Hong Lim Complex, located at Upper Cross Street near Chinatown, was built in 1978 to accommodate 1,000 residents with lower-level amenities. Many shops have since closed, leaving spaces vacant. 56% of the approximately 1,430 residents are over 50 years old — a primarily elderly community.
+            </p>
+            <p>
+                The core issue: traditional music is less popular among the younger generation because they find it "boring". Several nearby music studios exist, and the TENG Ensemble partners in initiatives fusing Chinese heritage with Singaporean identity.
+            </p>
+
+            <div class="carousel" id="research-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Site location"><img src="images/musicrev/site-map.jpg" alt="Site location" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Site analysis"><img src="images/musicrev/site-analysis.jpg" alt="Site analysis" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Site accessibility"><img src="images/musicrev/accessibility.jpg" alt="Accessibility diagram" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Sun study"><img src="images/musicrev/sun-path.jpg" alt="Sun path diagram" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Demographics"><img src="images/musicrev/demographics.jpg" alt="Demographics" loading="lazy"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="research-indicators"></div>
+            <div class="carousel-label" id="research-label">Site location</div>
+        </div>
+
+        <!-- Site Visit -->
+        <div class="article-section">
+            <p class="subtitle">Site Visit</p>
+            <p>
+                The void provides airflow and sunlight, but few people pass through. Most shops have been closed long-term. Upper levels house residential apartments, and an elderly recreational centre sits directly behind the site with convenient back-door access. The surrounding neighbourhood is quiet with minimal activity except during hawker meal times.
+            </p>
+
+            <div class="carousel" id="visit-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Site void"><img src="images/musicrev/site-visit1.jpg" alt="Site void" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Residential units"><img src="images/musicrev/site-visit2.jpg" alt="Residential units" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Recreational centre"><img src="images/musicrev/site-visit3.jpg" alt="Recreational centre" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Surroundings"><img src="images/musicrev/site-visit4.jpg" alt="Surroundings" loading="lazy"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="visit-indicators"></div>
+            <div class="carousel-label" id="visit-label">Site void</div>
+        </div>
+
+        <!-- Organisation -->
+        <div class="article-section">
+            <p class="subtitle">Organisation</p>
+            <p>
+                The Thau Yong Amateur Musical Association, established in 1931 and registered in 1962, performs Waijiang and Teochew music and opera. The project aims to revive traditional Chinese music while improving elderly quality of life through stress reduction and memory enhancement.
+            </p>
+
+            <img src="images/musicrev/thauyong.jpg" alt="Thau Yong Amateur Musical Association" loading="lazy">
+            <p class="caption">Thau Yong Amateur Musical Association</p>
+
+            <img src="images/musicrev/space-allocation.jpg" alt="Space allocation" loading="lazy">
+            <p class="caption">Space allocation</p>
+        </div>
+
+        <!-- Design -->
+        <div class="article-section">
+            <p class="subtitle">Design Concept</p>
+            <p>
+                The design centres on four principles: connectivity through a main stair-like structure connecting three levels that doubles as stage seating; modular pods that protrude from the main structure for lessons and jamming sessions; transformable retractable steps creating flexible space that can be inverted for interior recital seating; and versatile sliding walls enabling diverse layouts for different activities.
+            </p>
+
+            <div class="carousel" id="concept-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Connectivity"><img src="images/musicrev/concept-connect.jpg" alt="Connectivity concept" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Modular pods"><img src="images/musicrev/concept-diagram.jpg" alt="Concept diagram" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Transformable"><img src="images/musicrev/concept-contract.jpg" alt="Transformable concept" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Design diagrams"><img src="images/musicrev/diagrams.jpg" alt="Design diagrams" loading="lazy"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="concept-indicators"></div>
+            <div class="carousel-label" id="concept-label">Connectivity</div>
+        </div>
+
+        <!-- Drawings -->
+        <div class="article-section">
+            <p class="subtitle">Drawings</p>
+
+            <img src="images/musicrev/plans.jpg" alt="Floor plans" loading="lazy">
+            <p class="caption">Plans</p>
+
+            <img src="images/musicrev/section-perspective.jpg" alt="Sectional perspective" loading="lazy">
+            <p class="caption">Sectional perspective</p>
+        </div>
+
+        <!-- Model -->
+        <div class="article-section">
+            <p class="subtitle">Physical Model</p>
+
+            <div class="carousel" id="model-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Model"><img src="images/musicrev/model1.jpg" alt="Physical model 1" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Model"><img src="images/musicrev/model2.jpg" alt="Physical model 2" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Model"><img src="images/musicrev/model3.jpg" alt="Physical model 3" loading="lazy"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="model-indicators"></div>
+            <div class="carousel-label" id="model-label">Model</div>
+        </div>
+
+        <!-- Presentation -->
+        <div class="article-section">
+            <img src="images/musicrev/presentation-board.jpg" alt="Presentation board" loading="lazy">
+            <p class="caption">Presentation board</p>
         </div>
     </main>
 
@@ -51,6 +292,54 @@
     </footer>
 
     <script src="js/universal.js"></script>
+    <script>
+        function initCarousel(carouselId, indicatorsId, labelId) {
+            const carousel = document.getElementById(carouselId);
+            const track = carousel.querySelector('.carousel-track');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const indicatorWrap = document.getElementById(indicatorsId);
+            const labelEl = document.getElementById(labelId);
+            let current = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goTo(i));
+                indicatorWrap.appendChild(dot);
+            });
+
+            function goTo(index) {
+                current = index;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                indicatorWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === current);
+                });
+                labelEl.textContent = slides[current].dataset.label;
+            }
+
+            carousel.querySelector('.prev').addEventListener('click', () => {
+                goTo(current === 0 ? slides.length - 1 : current - 1);
+            });
+            carousel.querySelector('.next').addEventListener('click', () => {
+                goTo(current === slides.length - 1 ? 0 : current + 1);
+            });
+
+            let startX = 0;
+            carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+            carousel.addEventListener('touchend', e => {
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) {
+                    diff > 0 ? goTo(Math.min(current + 1, slides.length - 1)) : goTo(Math.max(current - 1, 0));
+                }
+            });
+        }
+
+        initCarousel('hero-carousel', 'hero-indicators', 'hero-label');
+        initCarousel('research-carousel', 'research-indicators', 'research-label');
+        initCarousel('visit-carousel', 'visit-indicators', 'visit-label');
+        initCarousel('concept-carousel', 'concept-indicators', 'concept-label');
+        initCarousel('model-carousel', 'model-indicators', 'model-label');
+    </script>
 
 </body>
 </html>
