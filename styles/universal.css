@@ -128,6 +128,64 @@ footer {
     padding: 4rem 0;
 }
 
+/* ===== Custom Cursor ===== */
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background: var(--color-black);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+}
+
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-black);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.08s ease, width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+
+/* Hover state — grow ring */
+.cursor-ring.hover {
+    width: 56px;
+    height: 56px;
+    border-color: var(--color-mid);
+    opacity: 0.3;
+}
+
+.cursor-dot.hover {
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+}
+
+/* Hide default cursor on desktop */
+@media (hover: hover) {
+    * {
+        cursor: none !important;
+    }
+}
+
 /* ===== Preloader ===== */
 .preloader {
     position: fixed;
