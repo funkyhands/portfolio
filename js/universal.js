@@ -1,3 +1,38 @@
+// ===== Preloader =====
+(function () {
+    // Only show preloader on first visit per session
+    if (sessionStorage.getItem('preloaded')) {
+        const loader = document.querySelector('.preloader');
+        if (loader) loader.remove();
+        document.body.classList.add('page-enter');
+        return;
+    }
+
+    const loader = document.querySelector('.preloader');
+    if (!loader) {
+        document.body.classList.add('page-enter');
+        return;
+    }
+
+    const textEl = loader.querySelector('.preloader-text');
+    const letters = 'NIGEL QUEK';
+    letters.split('').forEach((char, i) => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.style.animationDelay = (i * 0.06) + 's';
+        textEl.appendChild(span);
+    });
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loader.classList.add('done');
+            document.body.classList.add('page-enter');
+            sessionStorage.setItem('preloaded', '1');
+            setTimeout(() => loader.remove(), 600);
+        }, 1200);
+    });
+})();
+
 // ===== Mobile Nav Toggle =====
 const toggleButton = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -31,9 +66,11 @@ window.addEventListener('scroll', () => {
 });
 
 // ===== Page Transitions =====
-// Enter animation on load
+// Enter animation on load (only if no preloader)
 document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('page-enter');
+    if (!document.querySelector('.preloader')) {
+        document.body.classList.add('page-enter');
+    }
 });
 
 // Exit animation on internal link clicks

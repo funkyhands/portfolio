@@ -128,6 +128,49 @@ footer {
     padding: 4rem 0;
 }
 
+/* ===== Preloader ===== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-white);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.done {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-text {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--color-black);
+    overflow: hidden;
+}
+
+.preloader-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: preloaderLetter 0.4s ease forwards;
+}
+
+@keyframes preloaderLetter {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ===== Scroll Progress Bar ===== */
 .scroll-progress {
     position: fixed;
