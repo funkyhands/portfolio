@@ -1,3 +1,4 @@
+// ===== Mobile Nav Toggle =====
 const toggleButton = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 
@@ -5,17 +6,60 @@ toggleButton.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
+// ===== Back to Top =====
 const toTop = document.querySelector('.to-top');
 
+// ===== Scroll Progress Bar =====
+const progressBar = document.createElement('div');
+progressBar.className = 'scroll-progress';
+document.body.prepend(progressBar);
+
 window.addEventListener('scroll', () => {
+    // Back to top
     if (window.pageYOffset > 100) {
         toTop.classList.add('active');
     } else {
         toTop.classList.remove('active');
     }
+
+    // Progress bar
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight > 0) {
+        progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+    }
 });
 
-// Shared carousel initializer
+// ===== Page Transitions =====
+// Enter animation on load
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-enter');
+});
+
+// Exit animation on internal link clicks
+document.addEventListener('click', e => {
+    const link = e.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    // Skip external links, anchors, new tabs, and non-HTML links
+    if (!href ||
+        href.startsWith('#') ||
+        href.startsWith('http') ||
+        href.startsWith('mailto') ||
+        link.target === '_blank' ||
+        href.endsWith('.pdf')) return;
+
+    e.preventDefault();
+    document.body.classList.remove('page-enter');
+    document.body.classList.add('page-exit');
+
+    setTimeout(() => {
+        window.location.href = href;
+    }, 300);
+});
+
+// ===== Shared Carousel Initializer =====
 function initCarousel(carouselId, indicatorsId, labelId) {
     const carousel = document.getElementById(carouselId);
     if (!carousel) return;

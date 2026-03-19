@@ -15,6 +15,20 @@
     margin-bottom: 1rem;
 }
 
+.hero h1 .typed-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.9em;
+    background: var(--color-black);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
 .hero p {
     font-size: 1.125rem;
     color: var(--color-mid);

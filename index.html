@@ -36,7 +36,7 @@
 
     <main class="page-content">
         <section class="hero">
-            <h1>Architecture<br>& Design</h1>
+            <h1 id="typed-heading"></h1>
             <p>Aspiring architect based in Singapore, studying at SUTD. Passionate about reshaping spaces to enhance how people experience their surroundings.</p>
         </section>
 
@@ -192,6 +192,48 @@
                 track.style.scrollBehavior = 'smooth';
             }
         });
+
+        // Typed text effect
+        (function () {
+            const el = document.getElementById('typed-heading');
+            const lines = ['Architecture', '& Design'];
+            let lineIndex = 0;
+            let charIndex = 0;
+            const speed = 60;
+            const lineDelay = 200;
+
+            // Add cursor
+            const cursor = document.createElement('span');
+            cursor.className = 'typed-cursor';
+            el.appendChild(cursor);
+
+            function type() {
+                if (lineIndex >= lines.length) {
+                    // Remove cursor after done
+                    setTimeout(() => cursor.remove(), 1500);
+                    return;
+                }
+
+                const line = lines[lineIndex];
+
+                if (charIndex === 0 && lineIndex > 0) {
+                    el.insertBefore(document.createElement('br'), cursor);
+                }
+
+                if (charIndex < line.length) {
+                    el.insertBefore(document.createTextNode(line[charIndex]), cursor);
+                    charIndex++;
+                    setTimeout(type, speed);
+                } else {
+                    lineIndex++;
+                    charIndex = 0;
+                    setTimeout(type, lineDelay);
+                }
+            }
+
+            // Start after page enters
+            setTimeout(type, 500);
+        })();
     </script>
 
 </body>

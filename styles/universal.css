@@ -128,14 +128,51 @@ footer {
     padding: 4rem 0;
 }
 
+/* ===== Scroll Progress Bar ===== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--color-black);
+    z-index: 200;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
 /* ===== Page Transition ===== */
 body {
     opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
 }
 
-@keyframes fadeIn {
-    to { opacity: 1; }
+body.page-enter {
+    animation: pageSlideIn 0.5s ease forwards;
+}
+
+body.page-exit {
+    animation: pageSlideOut 0.3s ease forwards;
+}
+
+@keyframes pageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageSlideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
 }
 
 /* ===== Back to Top ===== */
