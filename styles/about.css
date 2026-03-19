@@ -27,6 +27,12 @@
     line-height: 1.8;
 }
 
+.resume-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+}
+
 .resume-link {
     display: inline-block;
     font-size: 0.875rem;

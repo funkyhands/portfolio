@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Asia Ghani — Hawker stall spatial design">
+    <meta property="og:title" content="Asia Ghani — Nigel Quek">
+    <meta property="og:description" content="Spatial design for a family-owned hawker stall at Adam Road Food Centre.">
+    <meta property="og:image" content="https://funkyhands.github.io/portfolio/images/asiaghani/asiag1.jpg">
+    <meta property="og:type" content="website">
     <title>Asia Ghani — Nigel Quek</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -167,47 +172,6 @@
 
     <script src="js/universal.js"></script>
     <script>
-        function initCarousel(carouselId, indicatorsId, labelId) {
-            const carousel = document.getElementById(carouselId);
-            const track = carousel.querySelector('.carousel-track');
-            const slides = carousel.querySelectorAll('.carousel-slide');
-            const indicatorWrap = document.getElementById(indicatorsId);
-            const labelEl = document.getElementById(labelId);
-            let current = 0;
-
-            slides.forEach((_, i) => {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-                dot.addEventListener('click', () => goTo(i));
-                indicatorWrap.appendChild(dot);
-            });
-
-            function goTo(index) {
-                current = index;
-                track.style.transform = 'translateX(-' + (current * 100) + '%)';
-                indicatorWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
-                    d.classList.toggle('active', i === current);
-                });
-                labelEl.textContent = slides[current].dataset.label;
-            }
-
-            carousel.querySelector('.prev').addEventListener('click', () => {
-                goTo(current === 0 ? slides.length - 1 : current - 1);
-            });
-            carousel.querySelector('.next').addEventListener('click', () => {
-                goTo(current === slides.length - 1 ? 0 : current + 1);
-            });
-
-            let startX = 0;
-            carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-            carousel.addEventListener('touchend', e => {
-                const diff = startX - e.changedTouches[0].clientX;
-                if (Math.abs(diff) > 40) {
-                    diff > 0 ? goTo(Math.min(current + 1, slides.length - 1)) : goTo(Math.max(current - 1, 0));
-                }
-            });
-        }
-
         initCarousel('site-carousel', 'site-indicators', 'site-label');
     </script>
 
