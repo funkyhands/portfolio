@@ -128,6 +128,16 @@ footer {
     padding: 4rem 0;
 }
 
+/* ===== Page Transition ===== */
+body {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
 /* ===== Back to Top ===== */
 .to-top {
     position: fixed;
@@ -144,13 +154,19 @@ footer {
     font-size: 1.2rem;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
     text-decoration: none;
 }
 
 .to-top.active {
     opacity: 1;
     pointer-events: auto;
+    transform: translateY(0);
+}
+
+.to-top:hover {
+    background-color: var(--color-mid);
 }
 
 /* ===== Responsive ===== */

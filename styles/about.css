@@ -27,6 +27,22 @@
     line-height: 1.8;
 }
 
+.resume-link {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+    padding: 0.6rem 1.5rem;
+    border-radius: 100px;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.resume-link:hover {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
 /* ===== Experience ===== */
 .experience-section {
     padding: 4rem 0;
