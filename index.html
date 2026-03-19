@@ -39,7 +39,8 @@
     <main class="page-content">
         <section class="hero">
             <h1 id="typed-heading"></h1>
-            <p>Aspiring architect based in Singapore, studying at SUTD. Passionate about reshaping spaces to enhance how people experience their surroundings.</p>
+            <p class="hero-role">I'm <span id="role-cycle" title="Click me!">an Architect</span></p>
+            <p class="hero-sub">Based in Singapore, studying at SUTD. Passionate about reshaping spaces to enhance how people experience their surroundings.</p>
         </section>
 
         <section class="section">
@@ -58,6 +59,16 @@
             </div>
         </section>
     </main>
+
+    <!-- Mini Game -->
+    <div class="mini-game">
+        <button class="mini-game-toggle" id="game-toggle" title="Build something!">&#9632;</button>
+    </div>
+    <div class="game-canvas" id="game-panel">
+        <span class="game-score" id="game-score">0</span>
+        <span class="game-hint">Click to stack</span>
+        <canvas id="game-canvas"></canvas>
+    </div>
 
     <a class="to-top" href="#">&uarr;</a>
 
@@ -195,7 +206,7 @@
             }
         });
 
-        // Typed text effect
+        // Typed text effect with hoverable letters
         (function () {
             const el = document.getElementById('typed-heading');
             const lines = ['Architecture', '& Design'];
@@ -204,14 +215,12 @@
             const speed = 60;
             const lineDelay = 200;
 
-            // Add cursor
             const cursor = document.createElement('span');
             cursor.className = 'typed-cursor';
             el.appendChild(cursor);
 
             function type() {
                 if (lineIndex >= lines.length) {
-                    // Remove cursor after done
                     setTimeout(() => cursor.remove(), 1500);
                     return;
                 }
@@ -223,7 +232,10 @@
                 }
 
                 if (charIndex < line.length) {
-                    el.insertBefore(document.createTextNode(line[charIndex]), cursor);
+                    const span = document.createElement('span');
+                    span.className = 'hero-letter';
+                    span.textContent = line[charIndex] === ' ' ? '\u00A0' : line[charIndex];
+                    el.insertBefore(span, cursor);
                     charIndex++;
                     setTimeout(type, speed);
                 } else {
@@ -233,8 +245,132 @@
                 }
             }
 
-            // Start after page enters
             setTimeout(type, 500);
+        })();
+
+        // Role cycler
+        (function () {
+            const roles = ['an Architect', 'a Photographer', 'a Cyclist', 'a Mountain Climber', 'a Designer', 'a Student'];
+            let index = 0;
+            const el = document.getElementById('role-cycle');
+
+            el.addEventListener('click', () => {
+                index = (index + 1) % roles.length;
+                el.classList.add('pop');
+                setTimeout(() => {
+                    el.textContent = roles[index];
+                    el.classList.remove('pop');
+                }, 150);
+            });
+        })();
+
+        // Mini stacking game
+        (function () {
+            const toggle = document.getElementById('game-toggle');
+            const panel = document.getElementById('game-panel');
+            const canvas = document.getElementById('game-canvas');
+            const scoreEl = document.getElementById('game-score');
+            const ctx = canvas.getContext('2d');
+
+            let open = false;
+            let blocks = [];
+            let moving = null;
+            let score = 0;
+            let gameOver = false;
+            let dir = 1;
+            const bw = 60;  // starting block width
+            const bh = 16;
+            const speed = 2;
+            const groundY = 280;
+
+            toggle.addEventListener('click', () => {
+                open = !open;
+                panel.classList.toggle('active', open);
+                if (open) initGame();
+            });
+
+            function initGame() {
+                canvas.width = 200;
+                canvas.height = 300;
+                blocks = [];
+                score = 0;
+                gameOver = false;
+                scoreEl.textContent = '0';
+
+                // Base block
+                blocks.push({ x: 70, y: groundY, w: bw, h: bh });
+                spawnBlock();
+                requestAnimationFrame(loop);
+            }
+
+            function spawnBlock() {
+                const prev = blocks[blocks.length - 1];
+                moving = { x: 0, y: prev.y - bh, w: prev.w, h: bh };
+                dir = 1;
+            }
+
+            canvas.addEventListener('click', () => {
+                if (gameOver) { initGame(); return; }
+                if (!moving) return;
+
+                const prev = blocks[blocks.length - 1];
+                const overlap = Math.min(moving.x + moving.w, prev.x + prev.w) - Math.max(moving.x, prev.x);
+
+                if (overlap <= 0) {
+                    gameOver = true;
+                    return;
+                }
+
+                const newX = Math.max(moving.x, prev.x);
+                blocks.push({ x: newX, y: moving.y, w: overlap, h: bh });
+                score++;
+                scoreEl.textContent = score;
+                moving = null;
+
+                // Scroll view up as tower grows
+                if (blocks.length > 12) {
+                    blocks.forEach(b => b.y += bh);
+                }
+
+                spawnBlock();
+            });
+
+            function loop() {
+                if (!open) return;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Draw blocks
+                blocks.forEach((b, i) => {
+                    const shade = 30 + (i * 12) % 180;
+                    ctx.fillStyle = `rgb(${shade}, ${shade}, ${shade})`;
+                    ctx.fillRect(b.x, b.y, b.w, b.h - 1);
+                });
+
+                // Draw moving block
+                if (moving && !gameOver) {
+                    moving.x += speed * dir;
+                    if (moving.x + moving.w > canvas.width) dir = -1;
+                    if (moving.x < 0) dir = 1;
+
+                    ctx.fillStyle = '#1a1a1a';
+                    ctx.fillRect(moving.x, moving.y, moving.w, moving.h - 1);
+                }
+
+                // Game over text
+                if (gameOver) {
+                    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+                    ctx.fillRect(0, 120, 200, 60);
+                    ctx.fillStyle = '#1a1a1a';
+                    ctx.font = '14px Inter, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Score: ' + score, 100, 148);
+                    ctx.font = '11px Inter, sans-serif';
+                    ctx.fillStyle = '#999';
+                    ctx.fillText('Click to restart', 100, 168);
+                }
+
+                requestAnimationFrame(loop);
+            }
         })();
     </script>
 

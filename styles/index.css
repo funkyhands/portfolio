@@ -35,6 +35,126 @@
     max-width: 480px;
 }
 
+.hero-role {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-dark);
+}
+
+#role-cycle {
+    cursor: pointer;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 2px;
+    transition: border-color 0.3s, color 0.3s;
+}
+
+#role-cycle:hover {
+    border-color: var(--color-black);
+    color: var(--color-black);
+}
+
+#role-cycle.pop {
+    animation: rolePop 0.35s ease;
+}
+
+@keyframes rolePop {
+    0% { transform: translateY(0); opacity: 1; }
+    40% { transform: translateY(-8px); opacity: 0; }
+    60% { transform: translateY(8px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.hero-sub {
+    font-size: 1rem;
+    color: var(--color-mid);
+    max-width: 480px;
+}
+
+/* Hero letter hover */
+.hero-letter {
+    display: inline-block;
+    transition: transform 0.2s ease, font-weight 0.2s ease, color 0.3s ease;
+    cursor: default;
+}
+
+.hero-letter:hover {
+    transform: translateY(-6px) rotate(-3deg);
+    color: var(--color-mid);
+    font-weight: 400;
+}
+
+/* ===== Mini Game ===== */
+.mini-game {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 50;
+}
+
+.mini-game-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, border-color 0.2s;
+    opacity: 0.5;
+}
+
+.mini-game-toggle:hover {
+    transform: scale(1.1);
+    border-color: var(--color-black);
+    opacity: 1;
+}
+
+.game-canvas {
+    display: none;
+    position: fixed;
+    bottom: 5rem;
+    left: 2rem;
+    width: 200px;
+    height: 300px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.game-canvas.active {
+    display: block;
+}
+
+.game-canvas canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.game-score {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 0.7rem;
+    color: var(--color-light);
+    font-family: var(--font-body);
+}
+
+.game-hint {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 0.65rem;
+    color: var(--color-light);
+    font-family: var(--font-body);
+}
+
 /* ===== Featured Projects ===== */
 .featured-heading {
     font-size: 0.8rem;
