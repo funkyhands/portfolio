@@ -101,6 +101,11 @@
         gap: 2rem;
     }
 
+    .about-portrait {
+        display: flex;
+        justify-content: center;
+    }
+
     .about-portrait img {
         max-width: 300px;
     }
