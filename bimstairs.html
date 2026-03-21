@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Escher Stairs — Parametric BIM stair generation using Python and Grasshopper">
+    <meta property="og:title" content="Escher Stairs — Nigel Quek">
+    <meta property="og:description" content="Parametric stair generation inspired by MC Escher, coded in Python with Grasshopper and Revit.">
+    <meta property="og:image" content="https://funkyhands.github.io/portfolio/images/bimstairs/revit-output.jpg">
+    <meta property="og:type" content="website">
+    <title>Escher Stairs — Nigel Quek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/article.css">
+    <style>
+        .article-section {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-top: 1px solid var(--color-border);
+        }
+        .article-section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .article-section img {
+            width: 100%;
+            margin: 2rem 0 0.5rem;
+        }
+        .article-section .caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-bottom: 2rem;
+        }
+        .article-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+        .article-section .subtitle {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--color-black);
+            margin: 0 0 1rem;
+        }
+
+        .carousel {
+            position: relative;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+        .carousel-slide {
+            min-width: 100%;
+        }
+        .carousel-slide img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            margin: 0 !important;
+            display: block;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .carousel-btn:hover { background: rgba(0, 0, 0, 0.8); }
+        .carousel-btn.prev { left: 0.75rem; }
+        .carousel-btn.next { right: 0.75rem; }
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--color-mid);
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.2s;
+        }
+        .carousel-dot.active {
+            background: var(--color-black);
+            border-color: var(--color-black);
+        }
+        .carousel-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .carousel-btn { width: 32px; height: 32px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader"><div class="preloader-text"></div></div>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html" class="active">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <a href="works.html" class="article-back">Works</a>
+
+        <section class="article-header">
+            <h1>Escher Stairs</h1>
+            <div class="article-date">Computational Design</div>
+        </section>
+
+        <!-- Brief -->
+        <div class="article-section">
+            <p class="subtitle">Brief</p>
+            <p>
+                Inspired by MC Escher's "Relativity" (1953), this project produces a surreal network of floating stairways that challenges conventional ideas of movement, orientation, and spatial logic. The design reflects the fragmented nature of contemporary existence — where paths multiply, choices abound, and connections are both abundant and elusive. Each stair and platform represents a moment of decision, inviting users to navigate a landscape with no clear destination.
+            </p>
+            <p>
+                The entire Python script was written from scratch, driving the full pipeline from grid creation to pathfinding to automatic Revit element generation.
+            </p>
+        </div>
+
+        <!-- Process -->
+        <div class="article-section">
+            <p class="subtitle">Process</p>
+            <p>
+                The system takes in input parameters — grid size, number of levels, landing size, gap size, number of paths, and a randomiser seed. It first generates a 3D array of points to form the grid. Start, middle, and end points are randomly assigned across the first, middle, and top layers. A breadth-first search algorithm then computes the optimum path through the grid, outputting horizontal lines that define the stair routes.
+            </p>
+
+            <img src="images/bimstairs/parameters.jpg" alt="Grasshopper parameters" loading="lazy">
+            <p class="caption">Input parameters</p>
+
+            <div class="carousel" id="process-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Grid generation — Grasshopper"><img src="images/bimstairs/grid-grasshopper.jpg" alt="Grid generation in Grasshopper" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Platform array"><img src="images/bimstairs/platforms-grid.jpg" alt="Platform grid" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Pathfinding through grid"><img src="images/bimstairs/pathfinding.jpg" alt="Pathfinding" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Grid structure"><img src="images/bimstairs/grid-structure.jpg" alt="Grid structure" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Top view"><img src="images/bimstairs/grid-top.jpg" alt="Grid top view" loading="lazy"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="process-indicators"></div>
+            <div class="carousel-label" id="process-label">Grid generation — Grasshopper</div>
+        </div>
+
+        <!-- Rhino to Revit -->
+        <div class="article-section">
+            <p class="subtitle">Rhino to Revit</p>
+            <p>
+                The script extracts level IDs from Revit and assigns them to each point along the generated path. Landing boundary curves and level IDs are fed into the landing generation script, automatically producing landings in Revit without manual placement. For the stairs, the script outputs three lists — stair paths, bottom levels, and top levels — which are fed into the stair generation script to automatically create all stair elements in Revit.
+            </p>
+
+            <img src="images/bimstairs/grasshopper.jpg" alt="Full Grasshopper definition" loading="lazy">
+            <p class="caption">Grasshopper definition with Python components</p>
+
+            <img src="images/bimstairs/rhino-revit.jpg" alt="Rhino.Inside Revit pipeline" loading="lazy">
+            <p class="caption">Rhino.Inside — Grasshopper to Revit pipeline</p>
+        </div>
+
+        <!-- Output -->
+        <div class="article-section">
+            <p class="subtitle">Output</p>
+            <p>
+                Each run of the randomiser produces a unique Escher-like stair composition. The robustness of the code allows it to handle a wide range of input parameters, automatically generating all paths, landings, and stair elements across multiple levels.
+            </p>
+
+            <img src="images/bimstairs/variations.gif" alt="Parametric variations" loading="lazy">
+            <p class="caption">Parametric variations — different randomiser seeds</p>
+
+            <div class="carousel" id="output-carousel">
+                <div class="carousel-track">
+                    <div class="carousel-slide" data-label="Revit output"><img src="images/bimstairs/revit-output.jpg" alt="Revit output 1" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Revit output"><img src="images/bimstairs/revit-full.jpg" alt="Revit output 2" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Baseline render"><img src="images/bimstairs/render-baseline.png" alt="Baseline render" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Render — marble"><img src="images/bimstairs/render-marble.png" alt="Marble render" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Render — wood"><img src="images/bimstairs/render-wood.png" alt="Wood render" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Render — wood variant"><img src="images/bimstairs/render-wood2.png" alt="Wood render variant" loading="lazy"></div>
+                    <div class="carousel-slide" data-label="Style transfer"><img src="images/bimstairs/render-stylized.png" alt="Style transfer render" loading="lazy"></div>
+                </div>
+                <button class="carousel-btn prev" aria-label="Previous">&lsaquo;</button>
+                <button class="carousel-btn next" aria-label="Next">&rsaquo;</button>
+            </div>
+            <div class="carousel-indicators" id="output-indicators"></div>
+            <div class="carousel-label" id="output-label">Revit output</div>
+        </div>
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2025</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+    <script>
+        initCarousel('process-carousel', 'process-indicators', 'process-label');
+        initCarousel('output-carousel', 'output-indicators', 'output-label');
+    </script>
+
+</body>
+</html>

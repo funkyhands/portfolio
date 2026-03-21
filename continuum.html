@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Continuum — Spatial Design World, 3D modelling across three scales">
+    <meta property="og:title" content="Continuum — Nigel Quek">
+    <meta property="og:description" content="3D modelling exercise across three scales — object, room, and building.">
+    <meta property="og:image" content="https://funkyhands.github.io/portfolio/images/sdw/room.jpg">
+    <meta property="og:type" content="website">
+    <title>Continuum — Nigel Quek</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/article.css">
+    <style>
+        .article-section {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-top: 1px solid var(--color-border);
+        }
+        .article-section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .article-section img {
+            width: 100%;
+            margin: 2rem 0 0.5rem;
+        }
+        .article-section .caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-bottom: 2rem;
+        }
+        .article-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+        .article-section .subtitle {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--color-black);
+            margin: 0 0 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader"><div class="preloader-text"></div></div>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html" class="active">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <a href="works.html" class="article-back">Works</a>
+
+        <section class="article-header">
+            <h1>Continuum</h1>
+            <div class="article-date">Spatial Design</div>
+        </section>
+
+        <!-- Brief -->
+        <div class="article-section">
+            <p class="subtitle">Brief</p>
+            <p>
+                A 3D modelling exercise exploring spatial representation across three scales — object, room, and building. Each scale builds upon the last, moving from the intimate detail of a personal object to the urban context of a residential block.
+            </p>
+        </div>
+
+        <!-- Object -->
+        <div class="article-section">
+            <p class="subtitle">Object — Gravel Bike</p>
+            <p>
+                An exploded axonometric drawing of my gravel bike, modelled at 1:10 scale. Every component — from the gear shifter and brake lever down to the crankset and rear derailleur — was individually modelled and annotated.
+            </p>
+
+            <img src="images/sdw/object-print.png" alt="Gravel bike exploded axonometric" loading="lazy">
+            <p class="caption">Gravel bike — Scale 1:10</p>
+        </div>
+
+        <!-- Room -->
+        <div class="article-section">
+            <p class="subtitle">Room — Interior Model</p>
+            <p>
+                A detailed isometric model of my room at 1:20 scale, capturing the lived-in quality of the space — loft bed, bicycle hung on the wall, desk setup, bookshelf, and wardrobe. The plan view reveals the spatial organisation and how the room is inhabited.
+            </p>
+
+            <img src="images/sdw/room-print.png" alt="Room isometric model" loading="lazy">
+            <p class="caption">Interior model — Scale 1:20</p>
+
+            <img src="images/sdw/room-plan.png" alt="Room plan" loading="lazy">
+            <p class="caption">Plan — Scale 1:30</p>
+        </div>
+
+        <!-- Building -->
+        <div class="article-section">
+            <p class="subtitle">Building — Site Context</p>
+            <p>
+                An isometric model of the residential HDB block within its urban context at 1:500 scale, showing the building's relationship to its surrounding streets, neighbouring blocks, and landscaping.
+            </p>
+
+            <img src="images/sdw/building.jpg" alt="Building in site context" loading="lazy">
+            <p class="caption">Site context — Scale 1:500</p>
+        </div>
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2025</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+
+</body>
+</html>
