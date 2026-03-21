@@ -205,19 +205,6 @@
             });
         });
 
-        // Click marker → highlight blog entry
-        Object.keys(markersByAdventure).forEach(id => {
-            markersByAdventure[id].forEach(({ marker }) => {
-                marker.on('click', () => {
-                    blogEntries.forEach(e => e.classList.remove('active'));
-                    const entry = document.querySelector(`.blog-entry[data-adventure="${id}"]`);
-                    if (entry) {
-                        entry.classList.add('active');
-                        entry.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                });
-            });
-        });
     </script>
 
 </body>
