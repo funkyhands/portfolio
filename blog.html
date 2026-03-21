@@ -44,23 +44,23 @@
         </section>
 
         <section class="blog-list">
-            <a href="indo24.html" class="blog-entry">
+            <a href="indo24.html" class="blog-entry" data-adventure="indo24">
                 <span>Hiking Mount Bhutak</span>
                 <span class="blog-date">Jan 2024</span>
             </a>
-            <a href="lopburi23.html" class="blog-entry">
+            <a href="lopburi23.html" class="blog-entry" data-adventure="lopburi23">
                 <span>Rock Climbing in Khao Chin Lae</span>
                 <span class="blog-date">Dec 2023</span>
             </a>
-            <a href="nepal23.html" class="blog-entry">
+            <a href="nepal23.html" class="blog-entry" data-adventure="nepal23">
                 <span>Hiking Thorong La Pass</span>
                 <span class="blog-date">May 2023</span>
             </a>
-            <a href="indo23.html" class="blog-entry">
+            <a href="indo23.html" class="blog-entry" data-adventure="indo23">
                 <span>Hiking Mount Raung</span>
                 <span class="blog-date">Apr 2023</span>
             </a>
-            <a href="hotdog.html" class="blog-entry">
+            <a href="hotdog.html" class="blog-entry" data-adventure="hotdog">
                 <span>Cycling from Singapore to Hanoi</span>
                 <span class="blog-date">Jul 2022</span>
             </a>
@@ -82,70 +82,80 @@
     <script>
         const map = L.map('map', {
             scrollWheelZoom: false
-        }).setView([25, 50], 3);
+        }).setView([15, 100], 4);
 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
             maxZoom: 19
         }).addTo(map);
 
+        // Adventure data with map link keys
         const adventures = [
-            { lat: 1.3521, lng: 103.8198, title: "Singapore", desc: "Starting point — Cycling to Hanoi", link: "hotdog.html" },
-            { lat: 21.0285, lng: 105.8542, title: "Hanoi, Vietnam", desc: "Finish — Cycling from Singapore", link: "hotdog.html" },
-            { lat: 28.8, lng: 83.88, title: "Thorong La Pass, Nepal", desc: "Hiking Thorong La Pass", link: "nepal23.html" },
-            { lat: -8.13, lng: 114.04, title: "Mount Raung, Indonesia", desc: "Hiking Mount Raung", link: "indo23.html" },
-            { lat: -7.92, lng: 112.95, title: "Mount Bhutak, Indonesia", desc: "Hiking Mount Bhutak", link: "indo24.html" },
-            { lat: 15.02, lng: 100.41, title: "Khao Chin Lae, Thailand", desc: "Rock Climbing in Lopburi", link: "lopburi23.html" },
-            { lat: 40.4168, lng: -3.7038, title: "Madrid, Spain", desc: "Madrid" },
-            { lat: 40.9429, lng: -4.1088, title: "Segovia, Spain", desc: "Segovia" },
-            { lat: 42.6, lng: 0.5, title: "Pyrenees", desc: "Pyrenees" },
-            { lat: 31.6295, lng: -7.9811, title: "Marrakech, Morocco", desc: "Marrakech" },
-            { lat: 46.2940, lng: 7.8816, title: "Visp, Switzerland", desc: "Visp" }
+            { id: "hotdog", lat: 1.3521, lng: 103.8198, title: "Singapore", desc: "Starting point — Cycling to Hanoi", link: "hotdog.html" },
+            { id: "hotdog", lat: 21.0285, lng: 105.8542, title: "Hanoi, Vietnam", desc: "Finish — Cycling from Singapore", link: "hotdog.html" },
+            { id: "nepal23", lat: 28.8, lng: 83.88, title: "Thorong La Pass, Nepal", desc: "Hiking Thorong La Pass", link: "nepal23.html" },
+            { id: "indo23", lat: -8.13, lng: 114.04, title: "Mount Raung, Indonesia", desc: "Hiking Mount Raung", link: "indo23.html" },
+            { id: "indo24", lat: -7.92, lng: 112.95, title: "Mount Bhutak, Indonesia", desc: "Hiking Mount Bhutak", link: "indo24.html" },
+            { id: "lopburi23", lat: 15.02, lng: 100.41, title: "Khao Chin Lae, Thailand", desc: "Rock Climbing in Lopburi", link: "lopburi23.html" },
+            { id: null, lat: 40.4168, lng: -3.7038, title: "Madrid, Spain", desc: "Madrid" },
+            { id: null, lat: 40.9429, lng: -4.1088, title: "Segovia, Spain", desc: "Segovia" },
+            { id: null, lat: 42.6, lng: 0.5, title: "Pyrenees", desc: "Pyrenees" },
+            { id: null, lat: 31.6295, lng: -7.9811, title: "Marrakech, Morocco", desc: "Marrakech" },
+            { id: null, lat: 46.2940, lng: 7.8816, title: "Visp, Switzerland", desc: "Visp" }
         ];
 
-        // Routes
-        const routes = [
-            {
-                name: "Singapore to Hanoi by Bicycle",
-                link: "hotdog.html",
-                color: "#e63946",
-                coords: [
-                    [1.3521, 103.8198],   // Singapore
-                    [1.47, 103.78],       // Johor Bahru crossing
-                    [2.19, 102.25],       // Malacca
-                    [3.14, 101.69],       // Kuala Lumpur
-                    [4.60, 101.08],       // Ipoh
-                    [5.41, 100.33],       // Penang
-                    [6.44, 100.20],       // Langkawi area / border
-                    [7.01, 100.47],       // Hat Yai
-                    [9.14, 99.33],        // Surat Thani
-                    [10.49, 99.19],       // Chumphon
-                    [12.57, 99.96],       // Hua Hin
-                    [13.75, 100.52],      // Bangkok
-                    [14.88, 102.01],      // Nakhon Ratchasima
-                    [16.47, 102.83],      // Khon Kaen
-                    [17.96, 102.63],      // Vientiane
-                    [18.80, 102.13],      // Luang Prabang area
-                    [19.91, 102.13],      // Northern Laos
-                    [20.42, 103.99],      // Lao Cai border
-                    [21.03, 105.85]       // Hanoi
-                ]
-            },
+        // Cycling route coordinates
+        const routeCoords = [
+            [1.3521, 103.8198], [1.47, 103.78], [2.19, 102.25],
+            [3.14, 101.69], [4.60, 101.08], [5.41, 100.33],
+            [6.44, 100.20], [7.01, 100.47], [9.14, 99.33],
+            [10.49, 99.19], [12.57, 99.96], [13.75, 100.52],
+            [14.88, 102.01], [16.47, 102.83], [17.96, 102.63],
+            [18.80, 102.13], [19.91, 102.13], [20.42, 103.99],
+            [21.03, 105.85]
         ];
 
-        routes.forEach(route => {
-            L.polyline(route.coords, {
-                color: route.color,
-                weight: 2.5,
-                opacity: 0.7,
-                dashArray: '6, 8',
-                smoothFactor: 1.5
-            }).addTo(map);
-        });
+        // Animated route — draw progressively
+        const routeLine = L.polyline([], {
+            color: '#e63946',
+            weight: 2.5,
+            opacity: 0.7,
+            dashArray: '6, 8',
+            smoothFactor: 1.5
+        }).addTo(map);
 
-        // Markers
+        let routeDrawn = false;
+
+        function animateRoute() {
+            if (routeDrawn) return;
+            routeDrawn = true;
+            let i = 0;
+            const drawn = [];
+
+            function step() {
+                if (i >= routeCoords.length) return;
+                drawn.push(routeCoords[i]);
+                routeLine.setLatLngs(drawn);
+                i++;
+                setTimeout(step, 120);
+            }
+            step();
+        }
+
+        // Trigger route animation when map scrolls into view
+        const mapObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateRoute();
+                mapObserver.disconnect();
+            }
+        }, { threshold: 0.3 });
+        mapObserver.observe(document.getElementById('map'));
+
+        // Create markers and store references by adventure id
+        const markersByAdventure = {};
+
         adventures.forEach(a => {
-            L.circleMarker([a.lat, a.lng], {
+            const marker = L.circleMarker([a.lat, a.lng], {
                 radius: 6,
                 fillColor: '#1a1a1a',
                 color: '#fff',
@@ -154,6 +164,59 @@
             })
             .addTo(map)
             .bindPopup(`<strong>${a.title}</strong><br>${a.link ? '<a href="' + a.link + '">' + a.desc + '</a>' : a.desc}`);
+
+            if (a.id) {
+                if (!markersByAdventure[a.id]) markersByAdventure[a.id] = [];
+                markersByAdventure[a.id].push({ marker, lat: a.lat, lng: a.lng });
+            }
+        });
+
+        // Blog list <-> map sync
+        const blogEntries = document.querySelectorAll('.blog-entry[data-adventure]');
+
+        function highlightMarkers(adventureId, highlight) {
+            const items = markersByAdventure[adventureId];
+            if (!items) return;
+            items.forEach(({ marker }) => {
+                if (highlight) {
+                    marker.setStyle({ radius: 10, fillColor: '#e63946', color: '#e63946' });
+                } else {
+                    marker.setStyle({ radius: 6, fillColor: '#1a1a1a', color: '#fff' });
+                }
+            });
+        }
+
+        // Hover blog entry → highlight marker + pan map
+        blogEntries.forEach(entry => {
+            const id = entry.dataset.adventure;
+
+            entry.addEventListener('mouseenter', () => {
+                highlightMarkers(id, true);
+                const items = markersByAdventure[id];
+                if (items && items.length > 0) {
+                    const { lat, lng } = items[0];
+                    map.flyTo([lat, lng], 6, { duration: 0.8 });
+                }
+            });
+
+            entry.addEventListener('mouseleave', () => {
+                highlightMarkers(id, false);
+                map.flyTo([15, 100], 4, { duration: 0.8 });
+            });
+        });
+
+        // Click marker → highlight blog entry
+        Object.keys(markersByAdventure).forEach(id => {
+            markersByAdventure[id].forEach(({ marker }) => {
+                marker.on('click', () => {
+                    blogEntries.forEach(e => e.classList.remove('active'));
+                    const entry = document.querySelector(`.blog-entry[data-adventure="${id}"]`);
+                    if (entry) {
+                        entry.classList.add('active');
+                        entry.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                });
+            });
         });
     </script>
 

@@ -32,8 +32,10 @@
     border-top: 1px solid var(--color-border);
 }
 
-.blog-entry:hover {
+.blog-entry:hover,
+.blog-entry.active {
     padding-left: 0.5rem;
+    background: var(--color-bg);
 }
 
 .blog-entry a {
