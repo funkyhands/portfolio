@@ -1,10 +1,10 @@
 /* ===== Hero ===== */
 .hero {
-    min-height: 70vh;
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 6rem 0 4rem;
+    justify-content: flex-start;
+    padding: 0 0 4rem;
 }
 
 
@@ -49,7 +49,7 @@
 }
 
 #role-cycle:hover {
-    color: var(--color-black);
+    color: var(--color-accent);
 }
 
 #role-cycle.pop {
@@ -78,7 +78,7 @@
 
 .hero-letter:hover {
     transform: translateY(-6px) rotate(-3deg);
-    color: var(--color-mid);
+    color: var(--color-accent);
     font-weight: 400;
 }
 
@@ -86,7 +86,7 @@
 .mini-game {
     position: fixed;
     bottom: 2rem;
-    left: 2rem;
+    left: calc(var(--sidebar-width) + 1rem);
     z-index: 50;
 }
 
@@ -115,7 +115,7 @@
     display: none;
     position: fixed;
     bottom: 5rem;
-    left: 2rem;
+    left: calc(var(--sidebar-width) + 1rem);
     width: 200px;
     height: 300px;
     background: var(--color-bg);
@@ -167,9 +167,10 @@
 .carousel-wrapper {
     position: relative;
     padding-bottom: 4rem;
-    /* Break out of page-content container */
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    /* Break out of page-content into full content area (viewport minus sidebar) */
+    width: calc(100vw - var(--sidebar-width));
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .carousel-track {
@@ -181,7 +182,7 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     cursor: grab;
-    padding: 0 calc((100vw - var(--max-width)) / 2 + 2rem);
+    padding: 0 max(2rem, calc((100vw - var(--sidebar-width) - var(--max-width)) / 2 + 2rem));
 }
 
 .carousel-track:active {
@@ -268,7 +269,7 @@
 }
 
 .carousel-dot.active {
-    background: var(--color-black);
+    background: var(--color-accent);
     transform: scale(1.25);
 }
 
@@ -304,6 +305,20 @@
         padding: 4rem 0 3rem;
     }
 
+    .mini-game {
+        left: 1rem;
+    }
+
+    .game-canvas {
+        left: 1rem;
+    }
+
+    .carousel-wrapper {
+        width: 100vw;
+        left: auto;
+        transform: none;
+        margin-left: calc(-50vw + 50%);
+    }
 
     .carousel-track {
         padding: 0 1.25rem;

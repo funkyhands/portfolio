@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RockHard — AI-Powered Building Facade Climbing Route Analyser">
+    <meta property="og:title" content="RockHard — Nigel Quek">
+    <meta property="og:description" content="An end-to-end ML system that transforms building facades into analysed climbing environments.">
+    <meta property="og:image" content="https://funkyhands.github.io/portfolio/images/rockhard/outcome.png">
+    <meta property="og:type" content="website">
+    <title>RockHard — Nigel Quek</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/article.css">
+    <style>
+        .article-section {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-top: 1px solid var(--color-border);
+        }
+        .article-section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .article-section img {
+            width: 100%;
+            margin: 2rem 0 0.5rem;
+        }
+        .article-section .caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-bottom: 2rem;
+        }
+        .article-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+        .article-section .subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-black);
+            margin: 0 0 1rem;
+        }
+
+        .img-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 2rem 0 0.5rem;
+        }
+        .img-grid-2 img {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Pipeline stages */
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 2rem 0;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .pipeline-stage {
+            display: flex;
+            align-items: baseline;
+            gap: 1.5rem;
+            padding: 0.9rem 1.25rem;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.875rem;
+        }
+        .pipeline-stage:last-child { border-bottom: none; }
+        .pipeline-num {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--color-accent);
+            min-width: 1.5rem;
+        }
+        .pipeline-name {
+            font-weight: 500;
+            color: var(--color-black);
+            min-width: 160px;
+        }
+        .pipeline-desc {
+            color: var(--color-mid);
+            font-size: 0.825rem;
+        }
+
+        /* Team credits */
+        .credits {
+            font-size: 0.85rem;
+            color: var(--color-mid);
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .img-grid-2 { grid-template-columns: 1fr; }
+            .pipeline-name { min-width: unset; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader"><div class="preloader-text"></div></div>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html" class="active">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog <span class="nav-wip">(wip)</span></a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <a href="works.html" class="article-back">Works</a>
+
+        <section class="article-header">
+            <h1>RockHard</h1>
+            <div class="article-date">Computational Design · 20.318 Creative Machine Learning</div>
+        </section>
+
+        <!-- Overview -->
+        <div class="article-section">
+            <p>
+                RockHard is an end-to-end machine learning system that transforms ordinary building facades into analysed climbing environments. Given a photograph of a building, the system automatically detects climbable architectural features — ledges, windowsills, protrusions, ornaments, and pipes — constructs a weighted graph over those features, finds an optimal climbing route using A* pathfinding informed by learned biomechanics, grades the route on the standard V-scale, and generates a photorealistic visualisation of the facade with integrated climbing features.
+            </p>
+            <p>
+                The project originally set out to analyse and generate climbing routes on natural cliff faces. Early prototypes ran hold detection and depth analysis directly on rock photographs, but natural rock surfaces proved intractable — the irregular, self-similar geometry of cliff faces made reliable depth estimation nearly impossible, and detected "holds" were indistinguishable from background texture. The team pivoted to building facades, where the structured geometry, flat planes, and distinct architectural features — sills, cornices, pipes, brackets — gave the detection pipeline a far more tractable problem to solve.
+            </p>
+            <p class="credits">With Bethanie Khoo, Lim Han Xue, Muhammad Hazim</p>
+
+            <div class="pipeline">
+                <div class="pipeline-stage">
+                    <span class="pipeline-num">01</span>
+                    <span class="pipeline-name">Hold Detection</span>
+                    <span class="pipeline-desc">CV, depth estimation, YOLO, colour segmentation — fused via weighted ensemble</span>
+                </div>
+                <div class="pipeline-stage">
+                    <span class="pipeline-num">02</span>
+                    <span class="pipeline-name">Route Generation</span>
+                    <span class="pipeline-desc">Weighted graph construction + A* pathfinding with grip difficulty and reach constraints</span>
+                </div>
+                <div class="pipeline-stage">
+                    <span class="pipeline-num">03</span>
+                    <span class="pipeline-name">Biomechanics</span>
+                    <span class="pipeline-desc">Reach parameters learned from real climbing video via MediaPipe pose extraction</span>
+                </div>
+                <div class="pipeline-stage">
+                    <span class="pipeline-num">04</span>
+                    <span class="pipeline-name">Route Grading</span>
+                    <span class="pipeline-desc">V-scale difficulty assessment, gap analysis, supplementary hold suggestions</span>
+                </div>
+                <div class="pipeline-stage">
+                    <span class="pipeline-num">05</span>
+                    <span class="pipeline-name">Facade Redesign</span>
+                    <span class="pipeline-desc">AI-generated photorealistic render via Stable Diffusion inpainting and Gendo.ai</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hold Detection -->
+        <div class="article-section">
+            <p class="subtitle">Hold Detection</p>
+            <p>
+                Detecting climbable features from a single photograph is a multi-class problem — a projecting sill looks entirely different from an exposed pipe or a decorative bracket. Rather than relying on any single method, the system runs four independent detectors in parallel (classical computer vision, depth-based protrusion analysis, a fine-tuned YOLOv8 model, and colour segmentation) and fuses their outputs through weighted ensemble voting.
+            </p>
+            <div class="img-grid-2">
+                <img src="images/rockhard/hold detection early stage.jpg" alt="Early hold detection on rock face" loading="lazy">
+                <img src="images/rockhard/movement detection early stage.jpg" alt="Climbing pose detection" loading="lazy">
+            </div>
+            <p class="caption">Hold detection on rock face (left) · MediaPipe pose extraction from climbing footage (right)</p>
+        </div>
+
+        <!-- Model Training -->
+        <div class="article-section">
+            <p class="subtitle">Model Training</p>
+            <p>
+                A gradient boosting route classifier was trained on annotated climbing transition data to predict which moves a real climber would choose. The most predictive features turned out to be geometric — vertical displacement (23.5% importance) and total reach distance (14.1%) — confirming that spatial geometry, not hold appearance, drives route selection.
+            </p>
+            <img src="images/rockhard/model training.png" alt="Model training" loading="lazy">
+            <p class="caption">Route transition model training</p>
+        </div>
+
+        <!-- Route Generation -->
+        <div class="article-section">
+            <p class="subtitle">Route Generation</p>
+            <p>
+                Each detected hold becomes a node in a directed graph. Edges are weighted by reach distance, grip difficulty, and direction — upward moves are rewarded, downclimbing is penalised. A* search finds the optimal path from the lowest to the highest hold. Where gaps exceed the maximum biomechanical reach, the system automatically suggests supplementary holds to bridge them.
+            </p>
+            <img src="images/rockhard/route detection .png" alt="Route plotted on building facade" loading="lazy">
+            <p class="caption">A* route plotted on a residential facade — green holds are existing features, orange are suggested additions</p>
+        </div>
+
+        <!-- Application -->
+        <div class="article-section">
+            <p class="subtitle">Web Application</p>
+            <p>
+                The full pipeline is exposed through an interactive Flask web application. Users can upload any facade photograph, auto-detect holds or place them manually, generate and adjust routes, target a specific V-scale difficulty grade, and trigger an AI facade redesign render — all through a browser interface with no technical setup required.
+            </p>
+            <img src="images/rockhard/application development.png" alt="RockHard web application" loading="lazy">
+            <p class="caption">RockHard web application — route overlay, V-scale grading, and hold analysis</p>
+        </div>
+
+        <!-- Outcomes -->
+        <div class="article-section">
+            <p class="subtitle">Outcomes</p>
+            <p>
+                The final stage uses Stable Diffusion inpainting and the Gendo.ai architectural rendering API to produce photorealistic visualisations of facades with integrated climbing wall structures. The system generates a continuous strip mask along the route path — rather than isolated hold spots — prompting the AI to render a coherent climbing installation as it would appear in a real building.
+            </p>
+            <img src="images/rockhard/outcome.png" alt="AI-generated facade redesign — residential building" loading="lazy">
+            <p class="caption">Gendo.ai facade redesign — climbing wall integrated into residential facade</p>
+            <img src="images/rockhard/outcome 2.png" alt="AI-generated facade redesign — curved building" loading="lazy">
+            <p class="caption">Gendo.ai facade redesign — climbing wall integrated into a curved architectural facade</p>
+        </div>
+
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2025</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+
+</body>
+</html>

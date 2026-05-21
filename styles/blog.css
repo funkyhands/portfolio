@@ -4,8 +4,9 @@
 }
 
 .blog-header h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 300;
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 400;
     letter-spacing: -0.02em;
 }
 

@@ -14,13 +14,14 @@
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
-    padding-bottom: 3rem;
+    padding-top: 0.5rem;
+    padding-bottom: 2rem;
 }
 
 .filter-btn {
     padding: 0.5rem 1.25rem;
-    font-size: 0.8rem;
-    font-family: inherit;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     border: 1px solid var(--color-border);
@@ -32,20 +33,20 @@
 }
 
 .filter-btn:hover {
-    border-color: var(--color-dark);
-    color: var(--color-black);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 .filter-btn.active {
-    background: var(--color-black);
-    border-color: var(--color-black);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
     color: var(--color-white);
 }
 
 /* ===== Grid ===== */
 .works-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     padding-bottom: 4rem;
 }
@@ -72,7 +73,7 @@
 
 .work-card img {
     width: 100%;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
@@ -113,6 +114,12 @@
 }
 
 /* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .works-grid {
         grid-template-columns: 1fr;

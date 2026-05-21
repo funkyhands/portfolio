@@ -7,9 +7,13 @@
     --color-border: #e0e0e0;
     --color-bg: #fafafa;
     --color-white: #fff;
+    --color-accent: #5a7a3a;
+    --color-accent-dark: #3f5828;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'Space Mono', 'Courier New', monospace;
     --max-width: 1200px;
     --nav-height: 60px;
+    --sidebar-width: 220px;
 }
 
 /* ===== Reset ===== */
@@ -48,45 +52,74 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: var(--sidebar-width);
+    height: 100vh;
     z-index: 100;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
 }
 
 nav {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 2rem;
-    height: var(--nav-height);
+    max-width: none;
+    margin: 0;
+    padding: 2.5rem 2rem;
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.nav-name {
+    margin-bottom: 3rem;
 }
 
 .nav-name a {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
 }
 
 .nav-links {
     display: flex;
+    flex-direction: column;
     list-style: none;
-    gap: 2rem;
+    gap: 1.25rem;
 }
 
 .nav-links a {
-    font-size: 0.875rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
     color: var(--color-mid);
     transition: color 0.2s;
     letter-spacing: 0.02em;
 }
 
-.nav-links a:hover,
+.nav-wip {
+    opacity: 0.5;
+}
+
+.nav-links a:hover {
+    color: var(--color-accent);
+}
+
 .nav-links a.active {
-    color: var(--color-black);
+    color: var(--color-accent);
+    position: relative;
+}
+
+.nav-links a.active::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0.9em;
+    background: var(--color-accent);
+    border-radius: 2px;
 }
 
 .nav-toggle {
@@ -109,6 +142,7 @@ nav {
 
 /* ===== Footer ===== */
 footer {
+    margin-left: var(--sidebar-width);
     padding: 3rem 2rem;
     text-align: center;
     font-size: 0.8rem;
@@ -119,9 +153,10 @@ footer {
 /* ===== Shared Layout ===== */
 .page-content {
     max-width: var(--max-width);
-    margin: 0 auto;
+    margin-left: var(--sidebar-width);
+    margin-right: auto;
     padding: 0 2rem;
-    padding-top: calc(var(--nav-height) + 4rem);
+    padding-top: 2.5rem;
 }
 
 .section {
@@ -176,9 +211,9 @@ footer {
 .scroll-progress {
     position: fixed;
     top: 0;
-    left: 0;
+    left: var(--sidebar-width);
     height: 3px;
-    background: var(--color-black);
+    background: var(--color-accent);
     z-index: 200;
     width: 0%;
     transition: width 0.1s linear;
@@ -212,7 +247,7 @@ body.page-exit {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background-color: var(--color-black);
+    background-color: var(--color-accent);
     color: var(--color-white);
     width: 40px;
     height: 40px;
@@ -235,11 +270,30 @@ body.page-exit {
 }
 
 .to-top:hover {
-    background-color: var(--color-mid);
+    background-color: var(--color-accent-dark);
 }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
+    header {
+        width: 100%;
+        height: var(--nav-height);
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--nav-height);
+        padding: 0 1.25rem;
+    }
+
+    .nav-name {
+        margin-bottom: 0;
+    }
+
     .nav-toggle {
         display: flex;
     }
@@ -264,7 +318,17 @@ body.page-exit {
     }
 
     .page-content {
+        margin-left: 0;
         padding-left: 1.25rem;
         padding-right: 1.25rem;
+        padding-top: calc(var(--nav-height) + 2rem);
+    }
+
+    footer {
+        margin-left: 0;
+    }
+
+    .scroll-progress {
+        left: 0;
     }
 }

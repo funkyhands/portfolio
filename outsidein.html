@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outside In — Urban Living, Architecture Core Studio 3, SUTD">
+    <meta property="og:title" content="Outside In — Nigel Quek">
+    <meta property="og:description" content="A dense urban housing proposal that dissolves the boundary between interior living and exterior green space.">
+    <meta property="og:image" content="https://funkyhands.github.io/portfolio/images/outsidein/collage 1.png">
+    <meta property="og:type" content="website">
+    <title>Outside In — Nigel Quek</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/universal.css">
+    <link rel="stylesheet" href="styles/article.css">
+    <style>
+        .article-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-top: 1px solid var(--color-border);
+        }
+        .article-section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .article-section img {
+            width: 100%;
+            margin: 2rem 0 0.5rem;
+        }
+        .article-section .caption {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-light);
+            margin-bottom: 2rem;
+        }
+        .article-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+        .article-section .subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-black);
+            margin: 0 0 1rem;
+        }
+
+        .img-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 2rem 0 0.5rem;
+        }
+        .img-grid-2 img {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Unit plan grid — 2 wide side by side, square crop */
+        .unit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 2rem 0 0.5rem;
+        }
+        .unit-grid img {
+            margin: 0;
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: contain;
+            background: #fafafa;
+        }
+
+        @media (max-width: 768px) {
+            .img-grid-2, .unit-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader"><div class="preloader-text"></div></div>
+
+    <header>
+        <nav>
+            <div class="nav-name"><a href="index.html">Nigel Quek</a></div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="works.html" class="active">Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog <span class="nav-wip">(wip)</span></a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <a href="works.html" class="article-back">Works</a>
+
+        <section class="article-header">
+            <h1>Outside In — Urban Living</h1>
+            <div class="article-date">Architecture · 20.103 Architecture Core Studio 3</div>
+        </section>
+
+        <!-- Hero collage -->
+        <div class="article-section">
+            <img src="images/outsidein/collage 1.jpg" alt="Outside In — overview collage" loading="lazy">
+            <p class="caption">Overview collage</p>
+            <p>
+                <em>Outside In</em> proposes a dense urban housing block that dissolves the boundary between interior living and the exterior landscape. Cascading communal green terraces weave through the massing, bringing sky, greenery, and shared outdoor life directly into the residential experience.
+            </p>
+        </div>
+
+        <!-- Site -->
+        <div class="article-section">
+            <p class="subtitle">Site</p>
+            <p>
+                The site is located at Lorong 8 Toa Payoh, at the edge of three distinct urban conditions — low-rise residential to the west, a bus depot, and light industrial sheds. Wedge-shaped and bounded by the Central Expressway, this boundary condition informed the stepped massing: the building acts as a transition between the low-scale neighbourhood and the larger infrastructure beyond.
+            </p>
+            <img src="images/outsidein/extracted/p04_img02_2474x2474.jpeg" alt="Site aerial" loading="lazy">
+            <p class="caption">Aerial context — Toa Payoh, Singapore</p>
+        </div>
+
+        <!-- Aggregation & Massing -->
+        <div class="article-section">
+            <p class="subtitle">Aggregation &amp; Massing</p>
+            <p>
+                The design began from an aggregation study — exploring how a single bar unit could be stacked, terraced, and folded to respond to the triangular site geometry while maximising green terrace exposure. The chosen scheme steps the massing in section, generating a continuous terraced landscape from street level to the building's peak.
+            </p>
+            <img src="images/outsidein/extracted/p05_img02_2474x1237.png" alt="Aggregation — unit scatter and terraced form" loading="lazy">
+            <img src="images/outsidein/extracted/p05_img01_2474x1237.png" alt="Aggregation — massing block and final scheme" loading="lazy">
+            <p class="caption">Aggregation studies — from unit scatter to final massing scheme</p>
+            <img src="images/outsidein/extracted/p10_img01_2474x2474.jpeg" alt="Final massing in urban context" loading="lazy">
+            <p class="caption">Final massing in urban context</p>
+        </div>
+
+        <!-- Programme -->
+        <div class="article-section">
+            <p class="subtitle">Programme</p>
+            <p>
+                The building layers four programmes across the massing: the existing ground-level structures, residential units on the upper floors, communal facilities at terrace junctions, and continuous green spaces woven through every level. Green space is not concentrated at the rooftop — it runs through the full section.
+            </p>
+            <div class="img-grid-2">
+                <img src="images/outsidein/extracted/p11_img01_2474x2474.jpeg" alt="Programme diagram" loading="lazy">
+                <img src="images/outsidein/extracted/p12_img01_2474x2474.jpeg" alt="Green spaces diagram" loading="lazy">
+            </div>
+            <p class="caption">Programme distribution (left) · Green spaces (right)</p>
+        </div>
+
+        <!-- Plans -->
+        <div class="article-section">
+            <p class="subtitle">Plans</p>
+            <p>
+                The typical floor plan wraps around two large open green courtyards. A public walking path loops the full perimeter of each terrace level, with shared spaces — communal kitchens, laundry, seating — positioned at the points where the path passes between units.
+            </p>
+            <img src="images/outsidein/extracted/p15_img02_3497x1451.png" alt="Typical plan — public walking path" loading="lazy">
+            <p class="caption">Public walking path highlighted in red</p>
+            <p>Four unit types range from 130 m² family units down to 36 m² micro-units, creating a genuinely mixed-income housing model on a single floor plate.</p>
+            <div class="unit-grid">
+                <img src="images/outsidein/extracted/p16_img01_2024x1299.png" alt="Unit type 1 — 130 sqm" loading="lazy">
+                <img src="images/outsidein/extracted/p16_img02_1412x960.png" alt="Unit type 2 — 90 sqm" loading="lazy">
+            </div>
+            <p class="caption">Unit type 1 — 130 m² (left) · Unit type 2 — 90 m² (right)</p>
+            <div class="unit-grid">
+                <img src="images/outsidein/extracted/p17_img01_1244x983.png" alt="Unit type 3 — 60 sqm" loading="lazy">
+                <img src="images/outsidein/extracted/p17_img02_643x997.png" alt="Unit type 4 — 36 sqm" loading="lazy">
+            </div>
+            <p class="caption">Unit type 3 — 60 m² (left) · Unit type 4 — 36 m² (right)</p>
+        </div>
+
+        <!-- Section -->
+        <div class="article-section">
+            <p class="subtitle">Section</p>
+            <p>
+                The section is the primary design tool. Residential floors are offset against green terrace voids, creating a vertical landscape of light and vegetation that penetrates the full depth of the building. Human circulation follows these terraces — every journey through the block becomes an outdoor experience.
+            </p>
+            <img src="images/outsidein/section.jpg" alt="Longitudinal section" loading="lazy">
+            <p class="caption">Longitudinal section</p>
+        </div>
+
+        <!-- Renders -->
+        <div class="article-section">
+            <p class="subtitle">Renders &amp; Collages</p>
+            <img src="images/outsidein/extracted/p22_img02_2475x2475.jpeg" alt="Terraced exterior" loading="lazy">
+            <p class="caption">Terraced exterior</p>
+            <img src="images/outsidein/extracted/p23_img02_2477x2477.jpeg" alt="Shared courtyard" loading="lazy">
+            <p class="caption">Shared courtyard at terrace level</p>
+            <img src="images/outsidein/extracted/p21_img01_2474x2474.jpeg" alt="Facade detail" loading="lazy">
+            <p class="caption">Facade detail</p>
+            <div class="img-grid-2">
+                <img src="images/outsidein/facade collage.jpg" alt="Facade collage" loading="lazy">
+                <img src="images/outsidein/hilltop collage.jpg" alt="Hilltop view" loading="lazy">
+            </div>
+            <p class="caption">Facade collage (left) · Hilltop view (right)</p>
+        </div>
+
+    </main>
+
+    <a class="to-top" href="#">&uarr;</a>
+
+    <footer>
+        <div>&copy; Nigel Quek 2025</div>
+    </footer>
+
+    <script src="js/universal.js"></script>
+
+</body>
+</html>

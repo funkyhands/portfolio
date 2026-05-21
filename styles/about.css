@@ -15,13 +15,6 @@
     object-fit: cover;
 }
 
-.about-text h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-}
-
 .about-text p {
     color: var(--color-dark);
     line-height: 1.8;
@@ -45,7 +38,8 @@
 }
 
 .resume-link:hover {
-    background: var(--color-black);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
     color: var(--color-white);
 }
 
@@ -58,7 +52,8 @@
 }
 
 .experience-section h2 {
-    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--color-light);

@@ -9,16 +9,17 @@
     <meta property="og:image" content="https://funkyhands.github.io/portfolio/images/photography-gallery/17.JPG">
     <meta property="og:type" content="website">
     <title>Photography — Nigel Quek</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/universal.css">
     <link rel="stylesheet" href="styles/article.css">
     <style>
         /* ===== Hero ===== */
         .photo-hero {
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
+            margin-left: var(--sidebar-width);
+            width: calc(100vw - var(--sidebar-width));
             height: 80vh;
             overflow: hidden;
             position: relative;
@@ -46,7 +47,8 @@
         /* ===== Gallery ===== */
         .gallery {
             max-width: 1400px;
-            margin: 0 auto;
+            margin-left: var(--sidebar-width);
+            margin-right: auto;
             padding: 2rem 0.75rem 4rem;
         }
 
@@ -119,7 +121,14 @@
 
         /* ===== Responsive ===== */
         @media (max-width: 768px) {
-            .photo-hero { height: 55vh; }
+            .photo-hero {
+                margin-left: 0;
+                width: 100vw;
+                height: 55vh;
+            }
+            .gallery {
+                margin-left: 0;
+            }
             .row { flex-direction: column; height: auto !important; }
             .row .img-wrap { height: 250px; flex: none !important; }
         }
@@ -140,7 +149,7 @@
             <ul class="nav-links">
                 <li><a href="works.html" class="active">Works</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blog.html">Blog <span class="nav-wip">(wip)</span></a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>

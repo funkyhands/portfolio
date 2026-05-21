@@ -9,9 +9,10 @@
     <meta property="og:image" content="https://funkyhands.github.io/portfolio/images/photography-gallery/17.JPG">
     <meta property="og:type" content="website">
     <title>Blog — Nigel Quek</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/universal.css">
     <link rel="stylesheet" href="styles/blog.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -31,7 +32,7 @@
             <ul class="nav-links">
                 <li><a href="works.html">Works</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="blog.html" class="active">Blog <span class="nav-wip">(wip)</span></a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -44,6 +45,14 @@
         </section>
 
         <section class="blog-list">
+            <a href="#" class="blog-entry" data-adventure="europe">
+                <span>Alone in Europe</span>
+                <span class="blog-date">Jan 2026</span>
+            </a>
+            <a href="#" class="blog-entry" data-adventure="vietnam">
+                <span>Vietnam Triple Summit</span>
+                <span class="blog-date">Jan 2025</span>
+            </a>
             <a href="indo24.html" class="blog-entry" data-adventure="indo24">
                 <span>Hiking Mount Bhutak</span>
                 <span class="blog-date">Jan 2024</span>
@@ -97,11 +106,14 @@
             { id: "indo23", lat: -8.13, lng: 114.04, title: "Mount Raung, Indonesia", desc: "Hiking Mount Raung", link: "indo23.html" },
             { id: "indo24", lat: -7.92, lng: 112.95, title: "Mount Bhutak, Indonesia", desc: "Hiking Mount Bhutak", link: "indo24.html" },
             { id: "lopburi23", lat: 15.02, lng: 100.41, title: "Khao Chin Lae, Thailand", desc: "Rock Climbing in Lopburi", link: "lopburi23.html" },
-            { id: null, lat: 40.4168, lng: -3.7038, title: "Madrid, Spain", desc: "Madrid" },
-            { id: null, lat: 40.9429, lng: -4.1088, title: "Segovia, Spain", desc: "Segovia" },
-            { id: null, lat: 42.6, lng: 0.5, title: "Pyrenees", desc: "Pyrenees" },
-            { id: null, lat: 31.6295, lng: -7.9811, title: "Marrakech, Morocco", desc: "Marrakech" },
-            { id: null, lat: 46.2940, lng: 7.8816, title: "Visp, Switzerland", desc: "Visp" }
+            { id: "vietnam", lat: 22.3034, lng: 103.7760, title: "Fansipan, Vietnam", desc: "Vietnam Triple Summit" },
+            { id: "vietnam", lat: 22.6350, lng: 103.8600, title: "Pu Si Lung, Vietnam", desc: "Vietnam Triple Summit" },
+            { id: "vietnam", lat: 22.5500, lng: 103.7800, title: "Bach Moc Luong Tu, Vietnam", desc: "Vietnam Triple Summit" },
+            { id: "europe", lat: 40.4168, lng: -3.7038, title: "Madrid, Spain", desc: "Alone in Europe" },
+            { id: "europe", lat: 40.9429, lng: -4.1088, title: "Segovia, Spain", desc: "Alone in Europe" },
+            { id: "europe", lat: 42.6, lng: 0.5, title: "Pyrenees", desc: "Alone in Europe" },
+            { id: "europe", lat: 31.6295, lng: -7.9811, title: "Marrakech, Morocco", desc: "Alone in Europe" },
+            { id: "europe", lat: 46.2940, lng: 7.8816, title: "Visp, Switzerland", desc: "Alone in Europe" }
         ];
 
         // Cycling route coordinates
